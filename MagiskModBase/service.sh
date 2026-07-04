@@ -75,7 +75,11 @@ grantRootApps(){
 getDefaultScopes(){
 	SDK="$(getprop ro.build.version.sdk 2>/dev/null)"
 	if [ "${SDK:-0}" -ge 37 ] 2>/dev/null; then
-		echo "com.android.systemui com.google.android.apps.nexuslauncher com.google.android.dialer $PKGNAME"
+		if [ -f "$MODDIR/a17_enable_default_scopes" ]; then
+			echo "com.android.systemui com.google.android.apps.nexuslauncher com.google.android.dialer $PKGNAME"
+		else
+			echo "$PKGNAME"
+		fi
 	else
 		echo "android system com.android.systemui com.google.android.apps.nexuslauncher com.google.android.dialer com.android.phone com.android.settings me.weishu.kernelsu com.rifsxd.ksunext $PKGNAME"
 	fi
