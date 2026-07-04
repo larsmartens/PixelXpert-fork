@@ -100,6 +100,20 @@ activateModuleLSPD()
 	fi
 }
 
+hasConfiguredLSPDScope()
+{
+	DBPATH=$LSPDDBPATH
+
+	CMD="PRAGMA table_info(scope);" && runSQL
+	if echo "$SQLRESULT" | grep -q "|module_pkg_name|"; then
+		CMD="select count(*) from scope where module_pkg_name = \"$PKGNAME\";" && runSQL
+	else
+		CMD="select count(*) from scope s join modules m on m.mid=s.mid where m.module_pkg_name = \"$PKGNAME\";" && runSQL
+	fi
+
+	[ "$(echo "$SQLRESULT" | xargs)" -gt 0 ] 2>/dev/null
+}
+
 activateModuleLSPDOld()
 {
 	DBPATH=$LSPDDBPATH
@@ -157,5 +171,9 @@ prepareSQL
 grantRootApps
 
 if resolveLspdDb; then
-	activateModuleLSPD
+	if hasConfiguredLSPDScope; then
+		echo "- Preserving existing LSPosed scope for $PKGNAME"
+	else
+		activateModuleLSPD
+	fi
 fi
