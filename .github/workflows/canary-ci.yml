@@ -42,6 +42,9 @@ jobs:
           grep -q 'touch.*skip_mount' MagiskModBase/customize.sh
           grep -q 'touch.*skip_mount' MagiskModBase/service.sh
 
+      - name: Guard Android 17 boot-safe architecture
+        run: bash .github/android17_static_guards.sh
+
       - name: Guard canonical owner URLs
         run: |
           if git grep -n 'lars[-]martens' -- .; then
@@ -126,7 +129,14 @@ jobs:
           grep -q 'customize.sh' zip-contents.txt
           grep -q 'service.sh' zip-contents.txt
           grep -q 'module.prop' zip-contents.txt
+          grep -q 'sqlite3' zip-contents.txt
           grep -q 'system/priv-app/PixelXpert/PixelXpert.apk' zip-contents.txt
+          if grep -q 'a17_enable_privapp_mount\|a17_enable_default_scopes' zip-contents.txt; then
+            echo "Android 17 opt-in marker unexpectedly shipped in module zip"
+            exit 1
+          fi
+          unzip -p output/PixelXpert.zip customize.sh | bash -n
+          unzip -p output/PixelXpert.zip service.sh | bash -n
 
       - name: Upload module zip
         uses: actions/upload-artifact@v7
