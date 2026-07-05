@@ -20,21 +20,27 @@ Device: Pixel 7 Pro, Android 17 CP2A.260605.012, SDK 37, blu_spark KSU-Next.
 - The patched PixelXpert Canary CI APK from GitHub Actions run `28756237299` installed successfully only after a full package reinstall. A plain `pm install -r` and `pm uninstall -k --user 0` path both preserved incompatible package signature state.
 - After full reinstall, PixelXpert's package UID changed from `10359` to `10417`. The device-protected PixelXpert preferences file was restored with the new app UID.
 - LSPosed kept PixelXpert's old data-app `base.apk` path after reinstall. The LSPosed `modules_config.db` row for `sh.siava.pixelxpert` was updated to the new `/data/app/.../base.apk` path, and the unsafe `android` scope row was removed again.
+- The final patched PixelXpert Canary CI APK from GitHub Actions run `28757487757` loads successfully in the active non-system_server scopes after widening the deferred preference probe timeout.
+- After the final reinstall, PixelXpert's package UID changed to `10439`. The LSPosed `modules_config.db` row was updated to the current `/data/app/.../base.apk` path again.
+- Final filtered LSPosed/logcat evidence showed PixelXpert records in `com.android.systemui`, `com.android.settings`, `com.google.android.apps.nexuslauncher`, `com.google.android.dialer`, and `sh.siava.pixelxpert` without the earlier SystemUI thread-affinity failures, Launcher preference probe abort, or custom-text keyguard crash signature.
+- Final crash evidence after the last PixelXpert reboot showed no new `system_server_crash`, `system_server_watchdog`, `system_server_pre_watchdog`, `system_server_anr`, or newer tombstone entries.
 
 ## Current Device State After Isolation
 
 - `sys.boot_completed=1`
 - PixelXpert KSU module enabled with `skip_mount=1`
-- PixelXpert live data APK hash after CI install: `17f97b0fcb86697a0e5f0a133fbd10dc36006997d4a85ebd3c38ee7339a65214`
-- PixelXpert module APK hash after CI install: `17f97b0fcb86697a0e5f0a133fbd10dc36006997d4a85ebd3c38ee7339a65214`
+- PixelXpert live data APK after CI run `28757487757`: `/data/app/~~YFXWoV8NBu-9bK0shsmBQA==/sh.siava.pixelxpert-BKoqKj1odZtQoT2ud1NaRw==/base.apk`
+- PixelXpert live data APK hash after CI install: `5f9b088c879451f8afb817b31041d11832daea0cda6f5a03d316c4d29ed445da`
+- PixelXpert module APK hash after CI install: `5f9b088c879451f8afb817b31041d11832daea0cda6f5a03d316c4d29ed445da`
+- PixelXpert app UID after final reinstall: `10439`
 - PixelXpert hooks enabled: `persist.pixelxpert.disable_hooks=0`
 - Android 17 unsafe hooks disabled: `persist.pixelxpert.a17.unsafe_scopes=0`
-- PixelXpert LSPosed scope excludes `android`
+- PixelXpert LSPosed scope excludes `android` and includes SystemUI, Settings, Launcher, Dialer, KSU manager packages, and PixelXpert self-scope
 - Hybrid Mount disabled
 - AdGuard cert and tailscaled enabled
 - V4A, rclone, unlimitedphotos, Thanox disabled pending isolated fixes
 - Qorvo UWB vendor service disabled for user 0; rollback is available on-device
-- Last completed validation before USB transport disappeared: the phone booted after the LSPosed DB path fix, unlocked once, and survived a 75 second post-unlock idle window. The final LSPosed log/dropbox collection after that reboot did not complete because adb and fastboot both lost the device and Windows no longer showed a Pixel/Google/ADB USB interface.
+- Final validation after reconnect: the phone booted with PixelXpert installed as a data app, PixelXpert KSU module enabled in `skip_mount` mode, hooks enabled, and LSPosed loading PixelXpert in all active non-system_server scopes. The last screen-unlock idle window was not repeated after the final CI APK because the lock-screen PIN bouncer did not focus reliably over adb, but process/log evidence showed the target scopes loaded and crash evidence stayed clean.
 
 ## Rollback Commands
 
@@ -48,21 +54,27 @@ Device: Pixel 7 Pro, Android 17 CP2A.260605.012, SDK 37, blu_spark KSU-Next.
   `/data/adb/pixelxpert-stage/install-ci-patched-apk-full-reinstall-20260706-000823/rollback.sh /data/adb/pixelxpert-stage/install-ci-patched-apk-full-reinstall-20260706-000823`
 - Restore pre-path-fix LSPosed DB:
   `/data/adb/pixelxpert-stage/lsposed-pixelxpert-db-20260706-001540/rollback.sh /data/adb/pixelxpert-stage/lsposed-pixelxpert-db-20260706-001540`
+- Restore pre-final-CI PixelXpert APK after full reinstall:
+  `/data/adb/pixelxpert-stage/install-ci-patched-apk-full-reinstall-20260706-004945/rollback.sh /data/adb/pixelxpert-stage/install-ci-patched-apk-full-reinstall-20260706-004945`
+- Restore pre-final-CI LSPosed DB:
+  `/data/adb/pixelxpert-stage/lsposed-pixelxpert-db-20260706-005004/rollback.sh /data/adb/pixelxpert-stage/lsposed-pixelxpert-db-20260706-005004`
 
 ## Code Fixes Added
 
 - `ScreenGestures`: construct the lockscreen double-tap detector with `Handler(Looper.getMainLooper())`.
 - `StatusbarGestures`: construct pull-down and pull-up gesture detectors with `Handler(Looper.getMainLooper())`.
 - `KeyguardMods`: skip the Android 17 keyguard constraint hook until the custom text view and placeholder ID are available.
+- `LauncherThemedIcons`: guard the Android 17 preference-provider update and keep the best-effort availability write from aborting module load.
+- `RemotePreferenceProvider`: increase the initial single-provider probe timeout from 250 ms to 1500 ms so Launcher preference access does not fail during cold boot/module startup.
 
 ## Reconnect Checklist
 
 1. Do not enter the SIM PIN unless Android explicitly shows a SIM PIN request.
 2. Reconnect USB or power the phone if it is off, then check `adb devices -l` and `fastboot devices`.
 3. If Android is booted, verify `sys.boot_completed`, `init.svc.bootanim`, and root with `su -c id`.
-4. Pull LSPosed module logs and dropbox entries after the LSPosed DB path fix.
-5. Confirm `modules_config.db` points `sh.siava.pixelxpert` at the current `/data/app/.../base.apk` and that `android` is absent from PixelXpert scope.
-6. Launch PixelXpert, Settings, Dialer, Launcher/SystemUI probes, then hold another post-unlock idle window.
+4. Re-check PixelXpert's live data APK hash and LSPosed `modules_config.db` path if another reinstall occurs.
+5. Keep `android` out of PixelXpert scope unless a separate system_server-safe staged plan is ready.
+6. For the next risky module changes, stage/install first, keep rollback scripts ready, reboot once per variable, and verify dropbox/tombstones after an idle window.
 
 ## Not Committed
 
