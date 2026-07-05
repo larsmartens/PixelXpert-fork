@@ -40,3 +40,23 @@ local.properties
 /ReleaseKey.properties
 /.kotlin
 /.idea/
+
+# Local Android 17 raw device captures. These may contain device identifiers,
+# account/session details, attestation serials, or lock-screen text.
+/docs/android-17/evidence/phase0a-raw-20260705/
+/docs/android-17/evidence/play-integrity-20260705-1610/
+/docs/android-17/evidence/play-integrity-20260705-ci573/
+/docs/android-17/evidence/play-integrity-20260705-kowx-no-trickystore/
+/docs/android-17/evidence/play-integrity-20260705-kowx-teesim/
+/docs/android-17/evidence/play-integrity-20260705-kowx/
+/docs/android-17/evidence/play-integrity-20260705-official-trickystore/
+/docs/android-17/evidence/play-integrity-20260705-trickystore-generate-mode-valid/
+/docs/android-17/evidence/play-integrity-20260705-trickystore-generate-mode/
+/docs/android-17/evidence/apply-adb-shell-adb-data-sepolicy-20260705.sh
+/docs/android-17/evidence/check-adb-shell-adb-data-sepolicy-20260705.sh
+/docs/android-17/evidence/enable-pixelxpert-declared-scopes-20260705.sh
+/docs/android-17/evidence/inspect-live-pi-state-20260705.sh
+/docs/android-17/evidence/install-kowx-pif-inject-s-20260705.sh
+/docs/android-17/evidence/install-official-trickystore-20260705.sh
+/docs/android-17/evidence/install-pifork-ci573-20260705.sh
+/docs/android-17/evidence/isolate-play-integrity-nonessential-modules-20260705.sh
