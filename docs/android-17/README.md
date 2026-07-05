@@ -22,6 +22,7 @@ This directory records the Android 17 device work on a Pixel 7 Pro (`cheetah`) r
   - Nohello is disabled.
 - Play Integrity now reaches confirmed PIF/Zygisk injection, but Simple Play Integrity Checker still returned an unevaluated response with no `deviceRecognitionVerdict`. See `evidence/ksu-next-alignment-and-zygisknext-20260705.md`.
 - The current root-stack decision is recorded in `evidence/root-stack-current-decision-20260705.md`: stay on blu_spark r266 `gs-next` with KSU-Next userspace/Manager v3.2.0 (`33129`) until a kernel explicitly integrates a newer KSU-Next userspace/UAPI.
+- The latest read-only disabled-state idle check is recorded in `evidence/device-disabled-idle-check-20260705.md`.
 - As of the latest validation, the phone remained stable after the KSU alignment and Zygisk Next enable reboots. No new relevant `system_server` dropbox entries or tombstones appeared; the newest relevant dropbox entry remained from 2026-07-04.
 
 ## Commits On Investigation Branch
