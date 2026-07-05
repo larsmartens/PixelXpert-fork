@@ -1,0 +1,90 @@
+== preflight ==
+Sun Jul  5 21:13:33 CEST 2026
+uid=0(root) gid=0(root) groups=0(root) context=u:r:ksu:s0
+1
+167f7e1da9faffbc3ba326e3a5c09ce83443f31df3343e5756dc92b8ebb68217  /data/local/tmp/Hybrid-Mount-Lite-4.2.0-1815.zip
+== backup ==
+e331c544af75cc4d770e08e071666250ce1a552f69004abeffdbcfe9ff57bffa  /data/adb/pixelxpert-stage/hybrid-mount-lite-20260705/hybrid-mount-before.tar
+rollback=/data/adb/pixelxpert-stage/hybrid-mount-lite-20260705/rollback-disable-hybrid-mount.sh
+== install ==
+- Module size: 2.19 MB
+- Installing to /data/adb/modules_update/hybrid_mount
+- Extracting module files
+- Running module installer
+- Current boot slot: _b
+- Device is system-as-root
+****************************
+ Hybrid Mount Lite
+ by Hybrid Mount Developers
+****************************
+**************************
+ Powered by KernelSU-Next
+**************************
+- Extracting module files
+- Device Architecture: arm64
+- Installing binary...
+- Existing config found
+- Skipping setup wizard to preserve settings
+- Installation complete
+- Done
+- Creating metamodule symlink
+- Module installed successfully!
+== configure ==
+== installed state ==
+-- config --
+moduledir = "/data/adb/modules"
+mountsource = "KSU"
+overlay_mode = "ext4"
+disable_umount = false
+default_mode = "overlay"
+daemon_startup_mode = "on-demand"
+
+[kasumi]
+enabled = false
+lkm_autoload = true
+lkm_dir = "/data/adb/modules/hybrid_mount/kasumi_lkm"
+lkm_kmi_override = ""
+mirror_path = "/dev/kasumi_mirror"
+enable_kernel_debug = false
+enable_stealth = false
+enable_hidexattr = false
+enable_mount_hide = false
+enable_maps_spoof = false
+enable_statfs_spoof = false
+enable_selinux_fix = false
+hide_uids = []
+uname_mode = "scoped"
+cmdline_value = ""
+kstat_rules = []
+maps_rules = []
+
+[kasumi.mount_hide]
+enabled = false
+path_pattern = ""
+
+[kasumi.statfs_spoof]
+enabled = false
+path = ""
+spoof_f_type = 0
+
+[kasumi.uname]
+sysname = ""
+nodename = ""
+release = ""
+version = ""
+machine = ""
+domainname = ""
+
+[rules.PixelXpert]
+default_mode = "overlay"
+
+[rules.PixelXpert.paths]
+"system/priv-app/PixelXpert" = "ignore"
+
+[rules.adguardcert]
+default_mode = "magic"
+
+[rules.adguardcert.paths]
+"system/etc/security/cacerts" = "magic"
+"apex/com.android.conscrypt/cacerts" = "magic"
+Hybrid Mount Lite installed/configured; reboot required for boot-time mount orchestration

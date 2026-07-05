@@ -1,0 +1,19 @@
+== resolve/start Henrik checker ==
+priority=0 preferredOrder=0 match=0x108000 specificIndex=-1 isDefault=false
+com.henrikherzig.playintegritychecker/.MainActivity
+  bash arg: -p
+  bash arg: com.henrikherzig.playintegritychecker
+  bash arg: 1
+args: [-p, com.henrikherzig.playintegritychecker, 1]
+ arg: "-p"
+ arg: "com.henrikherzig.playintegritychecker"
+ arg: "1"
+data="com.henrikherzig.playintegritychecker"
+Events injected: 1
+## Network stats: elapsed time=62ms (0ms mobile, 0ms wifi, 62ms not connected)
+== current focus ==
+  mCurrentFocus=Window{1e08706 u0 NotificationShade}
+  mFocusedApp=ActivityRecord{131958422 u0 com.henrikherzig.playintegritychecker/.MainActivity t5244}
+== screenshot ==
+== dump compressed ==
+UI hierchary dumped to: /sdcard/henrik.xml

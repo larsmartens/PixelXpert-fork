@@ -1,0 +1,179 @@
+== identity ==
+Sun Jul  5 21:13:05 CEST 2026
+uid=0(root) gid=0(root) groups=0(root) context=u:r:ksu:s0
+u:r:ksu:s0
+37
+google/cheetah/cheetah:17/CP2A.260605.012/15430684:user/release-keys
+1
+
+== root stack ==
+ksud 3.2.0
+Linux localhost 6.1.157+blu-spark #266 SMP PREEMPT Tue Jun 30 19:09:41 WEST 2026 aarch64 Toybox
+green
+1
+locked
+
+== modules ==
+PixelXpert state=enabled skip_mount=1 system=1 version=canary-513
+ViPER4Android-RE-Fork state=enabled skip_mount=0 system=1 version=8.0
+adguardcert state=enabled skip_mount=0 system=1 version=v2.2.0-beta.7
+magisk-captive-manager state=disabled skip_mount=0 system=0 version=v2.1.4
+magisk-tailscaled state=enabled skip_mount=0 system=1 version=v2.0.0.1
+rclone state=enabled skip_mount=0 system=1 version=v1.74.3
+rvmm-zygisk-mount state=enabled skip_mount=0 system=0 version=v9
+tricky_store state=enabled skip_mount=0 system=0 version=v1.0.1
+unlimitedphotos state=enabled skip_mount=0 system=1 version=v3
+youtube-morphe-jhc state=disabled skip_mount=0 system=0 version=v20.51.39 (patches 1.31.0.mpp)
+zygisk-detach state=enabled skip_mount=0 system=0 version=v1.23.1
+zygisk_lsposed state=enabled skip_mount=0 system=0 version=v2.1.0 (7769)
+zygisk_nohello state=enabled skip_mount=0 system=0 version=v0.0.7 (53-4d53ecf-release)
+zygisk_thanox state=disabled skip_mount=0 system=1 version=8.6-81-4388196
+zygisksu state=enabled skip_mount=0 system=0 version=1.4.2 (789-119aaa0-release)
+
+== PixelXpert package ==
+package:/data/app/~~gdZnIWR3H5bBjMKi-E5ZCg==/sh.siava.pixelxpert-oDshj4ZC89XmHRjXeOZf-Q==/base.apk
+priority=0 preferredOrder=0 match=0x108000 specificIndex=-1 isDefault=false
+sh.siava.pixelxpert/.FakeSplashActivityNormalIcon
+    codePath=/data/app/~~gdZnIWR3H5bBjMKi-E5ZCg==/sh.siava.pixelxpert-oDshj4ZC89XmHRjXeOZf-Q==
+    versionCode=513 minSdk=36 targetSdk=36
+    versionName=canary-513
+      android.permission.POST_NOTIFICATIONS
+      android.permission.ACCESS_LOCAL_NETWORK
+      android.permission.QUERY_ALL_PACKAGES
+      sh.siava.pixelxpert.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION: granted=true
+      android.permission.FOREGROUND_SERVICE: granted=true
+      android.permission.RECEIVE_BOOT_COMPLETED: granted=true
+      android.permission.INTERNET: granted=true
+      android.permission.ACCESS_NETWORK_STATE: granted=true
+      android.permission.QUERY_ALL_PACKAGES: granted=true
+      android.permission.WAKE_LOCK: granted=true
+        android.permission.POST_NOTIFICATIONS: granted=false, flags=[ USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]
+        android.permission.ACCESS_LOCAL_NETWORK: granted=true, flags=[ REVOKE_WHEN_REQUESTED|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]
+
+== LSPosed PixelXpert rows ==
+db=/data/adb/lspd/config/modules_config.db
+sh.siava.pixelxpert|/data/app/~~gdZnIWR3H5bBjMKi-E5ZCg==/sh.siava.pixelxpert-oDshj4ZC89XmHRjXeOZf-Q==/base.apk
+sh.siava.pixelxpert|0|1|0
+android|0
+com.android.settings|0
+com.android.systemui|0
+com.google.android.apps.nexuslauncher|0
+com.google.android.dialer|0
+com.rifsxd.ksunext|0
+sh.siava.pixelxpert|0
+
+== Hybrid Mount ==
+moduledir = "/data/adb/modules"
+mountsource = "KSU"
+overlay_mode = "ext4"
+disable_umount = false
+default_mode = "overlay"
+daemon_startup_mode = "on-demand"
+
+[kasumi]
+enabled = false
+lkm_autoload = true
+lkm_dir = "/data/adb/modules/hybrid_mount/kasumi_lkm"
+lkm_kmi_override = ""
+mirror_path = "/dev/kasumi_mirror"
+enable_kernel_debug = false
+enable_stealth = false
+enable_hidexattr = false
+enable_mount_hide = false
+enable_maps_spoof = false
+enable_statfs_spoof = false
+enable_selinux_fix = false
+hide_uids = []
+uname_mode = "scoped"
+cmdline_value = ""
+kstat_rules = []
+maps_rules = []
+
+[kasumi.mount_hide]
+enabled = false
+path_pattern = ""
+
+[kasumi.statfs_spoof]
+enabled = false
+path = ""
+spoof_f_type = 0
+
+[kasumi.uname]
+sysname = ""
+nodename = ""
+release = ""
+version = ""
+machine = ""
+domainname = ""
+
+[rules.PixelXpert]
+default_mode = "overlay"
+
+[rules.PixelXpert.paths]
+
+[rules.adguardcert]
+default_mode = "magic"
+
+[rules.adguardcert.paths]
+"system/etc/security/cacerts" = "magic"
+"apex/com.android.conscrypt/cacerts" = "magic"
+
+== AdGuard cert module ==
+id=adguardcert
+name=AdGuard Certificate
+version=v2.2.0-beta.7
+versionCode=45
+author=AdGuard, Lars Martens
+description=Moves AdGuard's Personal CA certificate from the user store to Android system and Conscrypt trust stores.
+updateJson=https://raw.githubusercontent.com/larsmartens/adguardcert/master/update.json
+/dev/block/dm-59 on /system/etc/security/cacerts type f2fs (ro,lazytime,seclabel,nosuid,nodev,noatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,reserve_root=32768,reserve_node=0,resuid=0,resgid=1065,inlinecrypt,alloc_mode=default,checkpoint_merge,fsync_mode=nobarrier,compress_algorithm=lz4,compress_log_size=2,compress_mode=fs,compress_cache,atgc,memory=normal,lookup_mode=perf)
+/dev/block/dm-59 on /apex/com.android.conscrypt/cacerts type f2fs (rw,lazytime,seclabel,nosuid,nodev,noatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,reserve_root=32768,reserve_node=0,resuid=0,resgid=1065,inlinecrypt,alloc_mode=default,checkpoint_merge,fsync_mode=nobarrier,compress_algorithm=lz4,compress_log_size=2,compress_mode=fs,compress_cache,atgc,memory=normal,lookup_mode=perf)
+/dev/block/dm-59 on /apex/com.android.conscrypt@371735480/cacerts type f2fs (rw,lazytime,seclabel,nosuid,nodev,noatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,reserve_root=32768,reserve_node=0,resuid=0,resgid=1065,inlinecrypt,alloc_mode=default,checkpoint_merge,fsync_mode=nobarrier,compress_algorithm=lz4,compress_log_size=2,compress_mode=fs,compress_cache,atgc,memory=normal,lookup_mode=perf)
+/dev/block/dm-59 on /system/etc/security/cacerts type f2fs (rw,lazytime,seclabel,nosuid,nodev,noatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,reserve_root=32768,reserve_node=0,resuid=0,resgid=1065,inlinecrypt,alloc_mode=default,checkpoint_merge,fsync_mode=nobarrier,compress_algorithm=lz4,compress_log_size=2,compress_mode=fs,compress_cache,atgc,memory=normal,lookup_mode=perf)
+/dev/block/dm-59 on /data/adb/modules/adguardcert/system/etc/security/cacerts type f2fs (rw,lazytime,seclabel,nosuid,nodev,noatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,reserve_root=32768,reserve_node=0,resuid=0,resgid=1065,inlinecrypt,alloc_mode=default,checkpoint_merge,fsync_mode=nobarrier,compress_algorithm=lz4,compress_log_size=2,compress_mode=fs,compress_cache,atgc,memory=normal,lookup_mode=perf)
+/dev/block/dm-59 on /apex/com.android.conscrypt/cacerts type f2fs (rw,lazytime,seclabel,nosuid,nodev,noatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,reserve_root=32768,reserve_node=0,resuid=0,resgid=1065,inlinecrypt,alloc_mode=default,checkpoint_merge,fsync_mode=nobarrier,compress_algorithm=lz4,compress_log_size=2,compress_mode=fs,compress_cache,atgc,memory=normal,lookup_mode=perf)
+/dev/block/dm-59 on /apex/com.android.conscrypt@371735480/cacerts type f2fs (rw,lazytime,seclabel,nosuid,nodev,noatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,reserve_root=32768,reserve_node=0,resuid=0,resgid=1065,inlinecrypt,alloc_mode=default,checkpoint_merge,fsync_mode=nobarrier,compress_algorithm=lz4,compress_log_size=2,compress_mode=fs,compress_cache,atgc,memory=normal,lookup_mode=perf)
+/dev/block/dm-59 on /data/adb/adguardcert/cacerts type f2fs (rw,lazytime,seclabel,nosuid,nodev,noatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,reserve_root=32768,reserve_node=0,resuid=0,resgid=1065,inlinecrypt,alloc_mode=default,checkpoint_merge,fsync_mode=nobarrier,compress_algorithm=lz4,compress_log_size=2,compress_mode=fs,compress_cache,atgc,memory=normal,lookup_mode=perf)
+/dev/block/dm-59 on /apex/com.android.conscrypt@371735480/cacerts type f2fs (rw,lazytime,seclabel,nosuid,nodev,noatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,reserve_root=32768,reserve_node=0,resuid=0,resgid=1065,inlinecrypt,alloc_mode=default,checkpoint_merge,fsync_mode=nobarrier,compress_algorithm=lz4,compress_log_size=2,compress_mode=fs,compress_cache,atgc,memory=normal,lookup_mode=perf)
+/dev/block/dm-59 on /data/adb/adguardcert/cacerts type f2fs (rw,lazytime,seclabel,nosuid,nodev,noatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,reserve_root=32768,reserve_node=0,resuid=0,resgid=1065,inlinecrypt,alloc_mode=default,checkpoint_merge,fsync_mode=nobarrier,compress_algorithm=lz4,compress_log_size=2,compress_mode=fs,compress_cache,atgc,memory=normal,lookup_mode=perf)
+/dev/block/dm-59 on /apex/com.android.conscrypt/cacerts type f2fs (rw,lazytime,seclabel,nosuid,nodev,noatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,reserve_root=32768,reserve_node=0,resuid=0,resgid=1065,inlinecrypt,alloc_mode=default,checkpoint_merge,fsync_mode=nobarrier,compress_algorithm=lz4,compress_log_size=2,compress_mode=fs,compress_cache,atgc,memory=normal,lookup_mode=perf)
+/dev/block/dm-59 on /data/adb/adguardcert/cacerts type f2fs (rw,lazytime,seclabel,nosuid,nodev,noatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,reserve_root=32768,reserve_node=0,resuid=0,resgid=1065,inlinecrypt,alloc_mode=default,checkpoint_merge,fsync_mode=nobarrier,compress_algorithm=lz4,compress_log_size=2,compress_mode=fs,compress_cache,atgc,memory=normal,lookup_mode=perf)
+/dev/block/dm-59 on /apex/com.android.conscrypt/cacerts type f2fs (rw,lazytime,seclabel,nosuid,nodev,noatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,reserve_root=32768,reserve_node=0,resuid=0,resgid=1065,inlinecrypt,alloc_mode=default,checkpoint_merge,fsync_mode=nobarrier,compress_algorithm=lz4,compress_log_size=2,compress_mode=fs,compress_cache,atgc,memory=normal,lookup_mode=perf)
+/dev/block/dm-59 on /apex/com.android.conscrypt@371735480/cacerts type f2fs (rw,lazytime,seclabel,nosuid,nodev,noatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,reserve_root=32768,reserve_node=0,resuid=0,resgid=1065,inlinecrypt,alloc_mode=default,checkpoint_merge,fsync_mode=nobarrier,compress_algorithm=lz4,compress_log_size=2,compress_mode=fs,compress_cache,atgc,memory=normal,lookup_mode=perf)
+
+== recent crash markers ==
+-rw-------    1 system   system       22298 Jul  4 18:54 /data/system/dropbox/system_server_pre_watchdog@1783184076537.txt.gz
+-rw-------    1 system   system       20479 Jul  4 17:33 /data/system/dropbox/system_server_pre_watchdog@1783179225869.txt.gz
+-rw-------    1 system   system       21702 Jul  4 17:31 /data/system/dropbox/system_server_watchdog@1783179099073.txt.gz
+-rw-------    1 system   system       20543 Jul  4 17:30 /data/system/dropbox/system_server_pre_watchdog@1783179010948.txt.gz
+-rw-------    1 system   system       20805 Jul  4 17:30 /data/system/dropbox/system_server_anr@1783179007548.txt.gz
+-rw-------    1 system   system       23472 Jul  4 17:29 /data/system/dropbox/system_server_watchdog@1783178964091.txt.gz
+-rw-------    1 system   system       20494 Jul  4 17:27 /data/system/dropbox/system_server_pre_watchdog@1783178874586.txt.gz
+-rw-------    1 system   system       20679 Jul  4 17:27 /data/system/dropbox/system_server_anr@1783178871067.txt.gz
+-rw-------    1 system   system       22650 Jul  4 17:27 /data/system/dropbox/system_server_watchdog@1783178826514.txt.gz
+-rw-------    1 system   system       20557 Jul  4 17:25 /data/system/dropbox/system_server_pre_watchdog@1783178737346.txt.gz
+-rw-------    1 system   system       20534 Jul  4 17:25 /data/system/dropbox/system_server_anr@1783178733994.txt.gz
+-rw-------    1 system   system       22627 Jul  4 17:24 /data/system/dropbox/system_server_watchdog@1783178690296.txt.gz
+-rw-------    1 system   system       20599 Jul  4 17:23 /data/system/dropbox/system_server_pre_watchdog@1783178602039.txt.gz
+-rw-------    1 system   system       20574 Jul  4 17:23 /data/system/dropbox/system_server_anr@1783178600771.txt.gz
+-rw-------    1 system   system       22977 Jul  4 17:22 /data/system/dropbox/system_server_watchdog@1783178555204.txt.gz
+-rw-------    1 system   system       20862 Jul  4 17:21 /data/system/dropbox/system_server_pre_watchdog@1783178464072.txt.gz
+-rw-------    1 system   system       20720 Jul  4 17:21 /data/system/dropbox/system_server_anr@1783178461220.txt.gz
+-rw-------    1 system   system       22893 Jul  4 17:20 /data/system/dropbox/system_server_watchdog@1783178418205.txt.gz
+-rw-------    1 system   system       24649 Jul  4 17:20 /data/system/dropbox/system_server_anr@1783178413874.txt.gz
+-rw-------    1 system   system       20639 Jul  4 17:18 /data/system/dropbox/system_server_pre_watchdog@1783178323478.txt.gz
+total 6452
+-rw-rw-r--    1 tombston system      112350 Jul  5 18:01 tombstone_03
+-rw-rw-r--    1 tombston system       54302 Jul  5 18:01 tombstone_03.pb
+-rw-rw-r--    1 tombston system      416967 Jul  4 15:15 tombstone_02
+-rw-rw-r--    1 tombston system      215407 Jul  4 15:15 tombstone_02.pb
+-rw-rw-r--    1 tombston system      500094 Jul  4 02:27 tombstone_01
+-rw-rw-r--    1 tombston system      247706 Jul  4 02:27 tombstone_01.pb
+-rw-rw-r--    1 tombston system      499751 Jul  4 02:26 tombstone_00
+-rw-rw-r--    1 tombston system      247473 Jul  4 02:26 tombstone_00.pb
+-rw-rw-r--    1 tombston system      503907 Jul  1 00:34 tombstone_07
+-rw-rw-r--    1 tombston system      249686 Jul  1 00:34 tombstone_07.pb
+-rw-rw-r--    1 tombston system     1036862 Jun 29 19:33 tombstone_06
+-rw-rw-r--    1 tombston system      593973 Jun 29 19:33 tombstone_06.pb
+-rw-rw-r--    1 tombston system     1205307 Jun 29 19:33 tombstone_05
+-rw-rw-r--    1 tombston system      687968 Jun 29 19:33 tombstone_05.pb

@@ -1,0 +1,25 @@
+== launch PixelXpert ==
+Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=sh.siava.pixelxpert/.FakeSplashActivityNormalIcon }
+Status: ok
+LaunchState: UNKNOWN (0)
+Activity: sh.siava.pixelxpert/.ui.activities.FakeSplashActivity
+WaitTime: 3205
+Complete
+== launch Settings ==
+Starting: Intent { act=android.settings.SETTINGS }
+Status: ok
+LaunchState: UNKNOWN (0)
+Activity: com.android.settings/.homepage.SettingsHomepageActivity
+WaitTime: 902
+Complete
+== launch Dialer ==
+  bash arg: -p
+  bash arg: com.google.android.dialer
+  bash arg: 1
+args: [-p, com.google.android.dialer, 1]
+ arg: "-p"
+ arg: "com.google.android.dialer"
+ arg: "1"
+data="com.google.android.dialer"
+Events injected: 1
+## Network stats: elapsed time=504ms (0ms mobile, 0ms wifi, 504ms not connected)

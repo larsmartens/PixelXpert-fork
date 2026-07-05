@@ -1,0 +1,253 @@
+== module props ==
+-- rvmm-zygisk-mount --
+id=rvmm-zygisk-mount
+name=rvmm-zygisk-mount
+version=v9
+versionCode=9
+author=j-hc
+updateJson=https://raw.githubusercontent.com/j-hc/rvmm-zygisk-mount/master/update.json
+enabled
+module.prop
+-- tricky_store --
+id=tricky_store
+name=AlwaysStrong
+version=v1.0.1
+versionCode=101
+author=Evokerr, JingMatrix, Enginex0, osm0sis
+updateJson=https://raw.githubusercontent.com/evoker0/AlwaysStrong/main/update.json
+app_replace_list.txt
+autopif4/PIXEL_CANARY_JSON
+autopif4/PIXEL_STATION_JSON
+autopif4/custom.pif.prop
+autopif4/pif.prop
+custom.pif.prop
+description.txt
+example.pif.prop
+target.txt
+-- zygisk-detach --
+id=zygisk-detach
+name=zygisk-detach
+version=v1.23.1
+versionCode=33
+updateJson=https://raw.githubusercontent.com/j-hc/zygisk-detach/master/update.json
+-- zygisk_lsposed --
+id=zygisk_lsposed
+name=LSPosed
+version=v2.1.0 (7769)
+versionCode=7769
+author=LSPosed Developers
+updateJson=https://lsposed.zip/update.json
+-- zygisk_nohello --
+id=zygisk_nohello
+name=Nohello
+version=v0.0.7 (53-4d53ecf-release)
+versionCode=53
+author=mhmrdd
+updateJson=https://mhmrdd.github.io/01000004/zygisk/nohello.json
+-- zygisk_thanox --
+id=zygisk_thanox
+name=Zygisk - Thanox
+version=8.6-81-4388196
+versionCode=3391379
+author=Tornaco
+updateJson=https://raw.githubusercontent.com/larsmartens/Thanox/master/android/android_framework/patch-magisk/update.jsondisabled
+-- zygisksu --
+id=zygisksu
+name=Zygisk Next
+version=1.4.2 (789-119aaa0-release)
+versionCode=789
+author=5ec1cff, Nullptr
+updateJson=https://api.nullptr.icu/android/zygisk-next/static/update.json
+== keybox hashes only ==
+/data/adb/tricky_store/keybox.xml
+4e2008d4c8afbbc0dc3659f8433c14e2c7b7f046d8256afccd387ec3d73fbe64  /data/adb/tricky_store/keybox.xml
+/data/adb/modules/tricky_store/keybox_fetch.sh
+1a3c8b018703890c66687c8261683be16cceef3c355dd143e1955f6465f1bfd6  /data/adb/modules/tricky_store/keybox_fetch.sh
+== config file names only ==
+/data/adb/.config/playintegrityfix/config.module.json
+/data/adb/.config/tricky_store/config.module.json
+/data/adb/.config/zygisk_nohello/config.module.json
+/data/adb/mmrl/modconf-playground.jsx
+/data/adb/modules/tricky_store/.bootstrapped
+/data/adb/modules/tricky_store/action.sh
+/data/adb/modules/tricky_store/app_replace_list.txt
+/data/adb/modules/tricky_store/autopif4.sh
+/data/adb/modules/tricky_store/autopif4/PIXEL_CANARY_JSON
+/data/adb/modules/tricky_store/autopif4/PIXEL_FI_HTML
+/data/adb/modules/tricky_store/autopif4/PIXEL_FLASH_HTML
+/data/adb/modules/tricky_store/autopif4/PIXEL_LATEST_HTML
+/data/adb/modules/tricky_store/autopif4/PIXEL_OTA_HTML
+/data/adb/modules/tricky_store/autopif4/PIXEL_SECBULL_HTML
+/data/adb/modules/tricky_store/autopif4/PIXEL_STATION_JSON
+/data/adb/modules/tricky_store/autopif4/PIXEL_VERSIONS_HTML
+/data/adb/modules/tricky_store/autopif4/PIXEL_ZIP_HEADERS
+/data/adb/modules/tricky_store/autopif4/custom.pif.prop
+/data/adb/modules/tricky_store/autopif4/pif.prop
+/data/adb/modules/tricky_store/banner.png
+/data/adb/modules/tricky_store/build_target_txt.sh
+/data/adb/modules/tricky_store/classes.dex
+/data/adb/modules/tricky_store/common_func.sh
+/data/adb/modules/tricky_store/common_setup.sh
+/data/adb/modules/tricky_store/conflict_scan.sh
+/data/adb/modules/tricky_store/custom.pif.prop
+/data/adb/modules/tricky_store/custom.pif.prop.bak
+/data/adb/modules/tricky_store/daemon
+/data/adb/modules/tricky_store/description.txt
+/data/adb/modules/tricky_store/example.pif.prop
+/data/adb/modules/tricky_store/inject
+/data/adb/modules/tricky_store/killpi.sh
+/data/adb/modules/tricky_store/libTEESimulator.so
+/data/adb/modules/tricky_store/libcertgen.so
+/data/adb/modules/tricky_store/migrate.sh
+/data/adb/modules/tricky_store/module.prop
+/data/adb/modules/tricky_store/post-fs-data.sh
+/data/adb/modules/tricky_store/rom_spoof_block.sh
+/data/adb/modules/tricky_store/sepolicy.rule
+/data/adb/modules/tricky_store/service.sh
+/data/adb/modules/tricky_store/status_fetch.sh
+/data/adb/modules/tricky_store/supervisor
+/data/adb/modules/tricky_store/sync_patch.sh
+/data/adb/modules/tricky_store/target.txt
+/data/adb/modules/tricky_store/tee_classes.dex
+/data/adb/modules/tricky_store/uninstall.sh
+/data/adb/modules/tricky_store/webroot/index.html
+/data/adb/modules/tricky_store/zygisk/arm64-v8a.so
+/data/adb/modules/tricky_store/zygisk/armeabi-v7a.so
+/data/adb/modules/tricky_store/zygisk/x86.so
+/data/adb/modules/tricky_store/zygisk/x86_64.so
+/data/adb/modules/unlimitedphotos/example.fpg.prop
+/data/adb/modules/zygisk_nohello/cleanup.sh
+/data/adb/modules/zygisk_nohello/description
+/data/adb/modules/zygisk_nohello/module.prop
+/data/adb/modules/zygisk_nohello/post-fs-data.sh
+/data/adb/modules/zygisk_nohello/sepolicy.rule
+/data/adb/modules/zygisk_nohello/service.sh
+/data/adb/modules/zygisk_nohello/zygisk/arm64-v8a.so
+/data/adb/nohello/no_clr_ptracemsg
+/data/adb/nohello/no_dirtyro_ar
+/data/adb/nohello/umount
+/data/adb/nohello/umount_persist
+/data/adb/pi-wallet-backup-20260609-012758/pif.prop
+/data/adb/pi-wallet-backup-20260609-012758/playintegrityfix.module/action.sh
+/data/adb/pi-wallet-backup-20260609-012758/playintegrityfix.module/autopif.sh
+/data/adb/pi-wallet-backup-20260609-012758/playintegrityfix.module/autopif_ota.sh
+/data/adb/pi-wallet-backup-20260609-012758/playintegrityfix.module/classes.dex
+/data/adb/pi-wallet-backup-20260609-012758/playintegrityfix.module/common_func.sh
+/data/adb/pi-wallet-backup-20260609-012758/playintegrityfix.module/module.prop
+/data/adb/pi-wallet-backup-20260609-012758/playintegrityfix.module/pif.prop
+/data/adb/pi-wallet-backup-20260609-012758/playintegrityfix.module/post-fs-data.sh
+/data/adb/pi-wallet-backup-20260609-012758/playintegrityfix.module/security_patch.sh
+/data/adb/pi-wallet-backup-20260609-012758/playintegrityfix.module/service.sh
+/data/adb/pi-wallet-backup-20260609-012758/playintegrityfix.module/system.prop
+/data/adb/pi-wallet-backup-20260609-012758/playintegrityfix.module/uninstall.sh
+/data/adb/pi-wallet-backup-20260609-012758/playintegrityfix.module/webroot/config.json
+/data/adb/pi-wallet-backup-20260609-012758/playintegrityfix.module/webroot/icon.jpg
+/data/adb/pi-wallet-backup-20260609-012758/playintegrityfix.module/webroot/index.html
+/data/adb/pi-wallet-backup-20260609-012758/playintegrityfix.module/zygisk/arm64-v8a.so
+/data/adb/pi-wallet-backup-20260609-012758/playintegrityfix.module/zygisk/armeabi-v7a.so
+/data/adb/pi-wallet-backup-20260609-012758/tricky_store.keybox.xml
+/data/adb/pi-wallet-backup-20260609-012758/tricky_store.security_patch.txt
+/data/adb/pi-wallet-backup-20260609-012758/tricky_store.target.txt
+/data/adb/pif.prop
+/data/adb/pixelxpert-stage/alwaysstrong-v101-20260705/AlwaysStrong-v1.0.1.zip.sha256
+/data/adb/pixelxpert-stage/alwaysstrong-v101-20260705/config-tricky_store.before.tar
+/data/adb/pixelxpert-stage/alwaysstrong-v101-20260705/keybox.after-install.sha256
+/data/adb/pixelxpert-stage/alwaysstrong-v101-20260705/keybox.before.sha256
+/data/adb/pixelxpert-stage/alwaysstrong-v101-20260705/module-list.after-install.json
+/data/adb/pixelxpert-stage/alwaysstrong-v101-20260705/module-list.before.json
+/data/adb/pixelxpert-stage/alwaysstrong-v101-20260705/module-playintegrityfix.before.tar
+/data/adb/pixelxpert-stage/alwaysstrong-v101-20260705/module-tricky_store.before.tar
+/data/adb/pixelxpert-stage/alwaysstrong-v101-20260705/rollback-restore-pif-tee.sh
+/data/adb/pixelxpert-stage/kowx-pif-inject-s-20260705-172809/custom.pif.prop.before
+/data/adb/pixelxpert-stage/kowx-pif-inject-s-20260705-172809/module.prop.before
+/data/adb/pixelxpert-stage/kowx-pif-inject-s-20260705-172809/playintegrityfix.before.tar
+/data/adb/pixelxpert-stage/kowx-pif-inject-s-20260705-172809/rollback-kowx-pif-inject-s.sh
+/data/adb/pixelxpert-stage/official-trickystore-20260705-173257/keybox.sha256.before
+/data/adb/pixelxpert-stage/official-trickystore-20260705-173257/module.prop.before
+/data/adb/pixelxpert-stage/official-trickystore-20260705-173257/rollback-official-trickystore.sh
+/data/adb/pixelxpert-stage/official-trickystore-20260705-173257/security_patch.txt.before
+/data/adb/pixelxpert-stage/official-trickystore-20260705-173257/target.txt.before
+/data/adb/pixelxpert-stage/official-trickystore-20260705-173257/tricky_store.config.before.tar
+/data/adb/pixelxpert-stage/official-trickystore-20260705-173257/tricky_store.module.before.tar
+/data/adb/pixelxpert-stage/pif-only-no-trickystore-20260705/module-list.after.json
+/data/adb/pixelxpert-stage/pif-only-no-trickystore-20260705/module-list.before.json
+/data/adb/pixelxpert-stage/pif-only-no-trickystore-20260705/rollback-enable-trickystore.sh
+/data/adb/pixelxpert-stage/pif-only-no-trickystore-20260705/tricky_store.module.prop.sha256
+/data/adb/pixelxpert-stage/pif-spoof-vending-fingerprint-20260705-163124/custom.pif.prop.before
+/data/adb/pixelxpert-stage/pif-spoof-vending-fingerprint-20260705-163124/custom.pif.prop.before.sha256
+/data/adb/pixelxpert-stage/pif-spoof-vending-fingerprint-20260705-163124/rollback-restore-pif-custom-prop.sh
+/data/adb/pixelxpert-stage/pif-strong-profile-20260705-1620/custom.pif.prop.before
+/data/adb/pixelxpert-stage/pif-strong-profile-20260705-1620/pif.prop.before
+/data/adb/pixelxpert-stage/pif-strong-profile-20260705-1620/rollback-restore-pif-profile.sh
+/data/adb/pixelxpert-stage/pifork-ci573-20260705-172017/custom.pif.prop.before
+/data/adb/pixelxpert-stage/pifork-ci573-20260705-172017/module.prop.before
+/data/adb/pixelxpert-stage/pifork-ci573-20260705-172017/playintegrityfix.before.tar
+/data/adb/pixelxpert-stage/pifork-ci573-20260705-172017/rollback-pifork-ci573.sh
+/data/adb/pixelxpert-stage/play-integrity-minimal-stack-20260705-014815/rollback-restore-modules.sh
+/data/adb/pixelxpert-stage/play-integrity-nohello-20260705-012234/disable.before
+/data/adb/pixelxpert-stage/play-integrity-nohello-20260705-012234/rollback-disable-nohello.sh
+/data/adb/pixelxpert-stage/play-integrity-nonessential-isolation-20260705-171422/module-state.before
+/data/adb/pixelxpert-stage/play-integrity-nonessential-isolation-20260705-171422/rollback-restore-nonessential-modules.sh
+/data/adb/pixelxpert-stage/restore-session-modules-20260705-164402/zygisk_nohello.module.prop.before
+/data/adb/pixelxpert-stage/teesim-checker-targets-20260705-163014/rollback-restore-teesim-targets.sh
+/data/adb/pixelxpert-stage/teesim-checker-targets-20260705-163014/target.txt.before
+/data/adb/pixelxpert-stage/teesim-checker-targets-20260705-163014/target.txt.before.sha256
+/data/adb/pixelxpert-stage/teesim-gms-patchlevel-20260705-162015/rollback-restore-teesim-security-patch.sh
+/data/adb/pixelxpert-stage/teesim-gms-patchlevel-20260705-162015/security_patch.txt.before
+/data/adb/pixelxpert-stage/teesim-gms-patchlevel-20260705-162015/security_patch.txt.before.sha256
+/data/adb/pixelxpert-stage/teesim-minimal-targets-20260705-1615/rollback-restore-teesim-targets.sh
+/data/adb/pixelxpert-stage/teesim-minimal-targets-20260705-1615/target.txt.before
+/data/adb/pixelxpert-stage/trickystore-generate-mode-targets-20260705/rollback-restore-targets.sh
+/data/adb/pixelxpert-stage/trickystore-generate-mode-targets-20260705/target.txt.after.sha256
+/data/adb/pixelxpert-stage/trickystore-generate-mode-targets-20260705/target.txt.before
+/data/adb/pixelxpert-stage/trickystore-generate-mode-targets-20260705/target.txt.before.sha256
+/data/adb/pixelxpert-stage/trickystore-generate-mode-targets-20260705/target.txt.new
+/data/adb/post-fs-data.d/.nohello_cleanup.sh
+/data/adb/tricky_store/autopif.log
+/data/adb/tricky_store/backups/play-integrity-opt-20260704-152235/rollback_restore_tricky_store_config.sh
+/data/adb/tricky_store/backups/play-integrity-opt-20260704-152235/security_patch.txt.bak
+/data/adb/tricky_store/backups/play-integrity-opt-20260704-152235/target.txt.bak
+/data/adb/tricky_store/backups/teesim-security-patch-20260704-152707/rollback_restore_security_patch.sh
+/data/adb/tricky_store/backups/teesim-security-patch-20260704-152707/security_patch.txt.bak
+/data/adb/tricky_store/boot_hash.bin
+/data/adb/tricky_store/boot_key.bin
+/data/adb/tricky_store/hbk
+/data/adb/tricky_store/keybox.xml.bak
+/data/adb/tricky_store/logs/certgen.log
+/data/adb/tricky_store/no_auto_keybox
+/data/adb/tricky_store/persistent_keys/[redacted]
+/data/adb/tricky_store/security_patch.txt
+/data/adb/tricky_store/target.txt
+== recent sanitized logs ==
+07-05 21:26:15.638   558 22640 I keystore2: system/security/keystore2/watchdog/src/lib.rs:371 - Watchdog thread idle -> terminating. Have a great day.
+07-05 21:26:21.564  8137  8561 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 21:26:26.275  4710 14784 I libbinder.BpBinder: onLastStrongRef automatically unlinking death recipients for binder (0xb400007331155ce0) with descriptor: 'android.hardware.media.bufferpool2.IClientManager'
+07-05 21:26:26.486  4710  7409 I libbinder.BpBinder: onLastStrongRef automatically unlinking death recipients for binder (0xb400007331154dc0) with descriptor: 'android.hardware.media.bufferpool2.IClientManager'
+07-05 21:26:29.198  5441  5962 I libbinder.BpBinder: onLastStrongRef automatically unlinking death recipients for binder (0xb40000775bd56da0) with descriptor: '(not cached)'
+07-05 21:26:29.198  5441  5962 I libbinder.BpBinder: onLastStrongRef automatically unlinking death recipients for binder (0xb40000775bd5a130) with descriptor: '(not cached)'
+07-05 21:26:37.049   570  8308 I libbinder.BpBinder: onLastStrongRef automatically unlinking death recipients for binder (0xb40000727564cca0) with descriptor: '(not cached)'
+07-05 21:26:37.085  5441  6085 V WindowManager:         {WCT{RemoteToken{402db59 Task{6583217 #5244 type=standard A=10292:com.henrikherzig.playintegritychecker}}} m=TO_BACK f=FLAG_CHANGED_INTERACTIVE leash=Surface(name=Task=5244#138)/@0x12a410d sb=Rect(0, 0 - 1440, 3120) eb=Rect(0, 0 - 1440, 3120) epz=Point(1440, 3120) d=0 taskParent=-1 winMode=1 userId=0}
+07-05 21:26:39.401  8552 10017 I TEESimulator: Using EC keybox keybox.xml; attestation cert serials (hex): [redacted]
+07-05 21:26:39.458  8137  9529 E .gms.persistent: hiddenapi: Accessing hidden method Landroid/security/keystore2/AndroidKeyStoreProvider;-><init>()V (runtime_flags=0, domain=platform, api=blocked) from Lcom/google/ccc/abuse/droidguard/DroidGuard; (domain=app, TargetSdkVersion=37) using JNI: denied
+07-05 21:26:39.471 10207 23673 I Finsky  : [170] Integrity key attestation record generated successfully.
+07-05 21:26:39.481  8552 10017 I TEESimulator: Using EC keybox keybox.xml; attestation cert serials (hex): [redacted]
+07-05 21:26:49.544   558 23675 I keystore2: system/security/keystore2/watchdog/src/lib.rs:371 - Watchdog thread idle -> terminating. Have a great day.
+07-05 21:26:52.177  8137 22717 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 21:26:52.178  8137 22717 W SemanticLocation: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 21:26:52.187  8137 22717 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 21:26:52.187  8137 22717 W SemanticLocation: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 21:26:52.390  8137 22717 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 21:26:52.390  8137 22717 W SemanticLocation: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 21:26:52.400  8137 22717 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 21:26:52.401  8137 22717 W SemanticLocation: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 21:26:52.570  8137 22717 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 21:26:52.572  8137 22717 W SemanticLocation: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 21:26:52.624  8137 22717 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 21:26:52.624  8137 22717 W SemanticLocation: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 21:26:52.628  8137  8192 I libbinder.BpBinder: onLastStrongRef automatically unlinking death recipients for binder (0xb40000775bc7a770) with descriptor: '(not cached)'
+07-05 21:27:00.780  8137 10771 I GmsCoreXrpcWrapper: (REDACTED) Creating an unauthenticated channel provider with trafficStatsTag=%d trafficStatsUid=%d
+07-05 21:27:00.938  8552 10017 I TEESimulator: [TX_ID: 770] StrongBox op limit reached for uid=10129 (hw=0 sw=4 max=4)
+07-05 21:27:00.940  8495 14041 W CryptauthV2: [ClientDataOperation] No keyMetadata found for keyName=fido:android_strongbox_key_cable_irk
+07-05 21:27:00.943  8495 14041 W CryptauthV2: [ClientDataOperation] No keyMetadata found for keyName=fido:android_strongbox_key_cable_lk
+07-05 21:27:00.945  8495 14041 W CryptauthV2: [ClientDataOperation] No keyMetadata found for keyName=fido:android_strongbox_key
+07-05 21:27:47.668  5441  7209 D ActivityManager: freezing 21450 com.henrikherzig.playintegritychecker

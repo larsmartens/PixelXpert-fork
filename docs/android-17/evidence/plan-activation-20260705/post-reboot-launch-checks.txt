@@ -1,0 +1,19 @@
+Starting: Intent { cmp=sh.siava.pixelxpert/.FakeSplashActivityNormalIcon }
+Status: ok
+LaunchState: COLD
+Activity: sh.siava.pixelxpert/.ui.activities.SplashScreenActivity
+TotalTime: 2293
+WaitTime: 2299
+Complete
+Starting: Intent { act=android.settings.SETTINGS }
+Status: ok
+LaunchState: UNKNOWN (0)
+Activity: com.android.settings/.homepage.SettingsHomepageActivity
+WaitTime: 3023
+Complete
+Starting: Intent { cmp=com.google.android.dialer/.extensions.GoogleDialtactsActivity }
+Status: ok
+LaunchState: UNKNOWN (0)
+Activity: com.google.android.dialer/com.android.dialer.main.impl.MainActivity
+WaitTime: 3035
+Complete

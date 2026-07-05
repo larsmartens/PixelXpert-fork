@@ -1,0 +1,37 @@
+SystemUptimeMs: 138988
+Process: system_server
+Timestamp: 2026-07-05 21:19:21.876+0200
+Build: google/cheetah/cheetah:17/CP2A.260605.012/15430684:user/release-keys
+DefaultScreen-State: UNKNOWN
+Crash-Handler: com.android.internal.os.RuntimeInit$KillApplicationHandler
+Loading-Progress: 1.0
+Dropped-Count: 0
+
+java.lang.RuntimeException: Failed to create service com.android.server.wifi.WifiService: service constructor threw an exception
+	at com.android.server.SystemServiceManager.startService(SystemServiceManager.java:255)
+	at com.android.server.SystemServiceManager.startServiceFromJar(SystemServiceManager.java:174)
+	at com.android.server.SystemServer.startOtherServices(SystemServer.java:2257)
+	at com.android.server.SystemServer.run(SystemServer.java:1049)
+	at com.android.server.SystemServer.main(SystemServer.java:727)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:575)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:917)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Constructor.newInstance0(Native Method)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:343)
+	at com.android.server.SystemServiceManager.startService(SystemServiceManager.java:244)
+	... 7 more
+Caused by: java.util.NoSuchElementException
+	at android.os.HwBinder.getService(Native Method)
+	at android.os.HwBinder.getService(HwBinder.java:93)
+	at com.android.wifi.x.android.hidl.manager.V1_2.IServiceManager.getService(IServiceManager.java:74)
+	at com.android.wifi.x.android.hidl.manager.V1_2.IServiceManager.getService(IServiceManager.java:84)
+	at com.android.server.wifi.hal.WifiHalHidlImpl.getServiceManager(WifiHalHidlImpl.java:558)
+	at com.android.server.wifi.hal.WifiHalHidlImpl.serviceDeclared(WifiHalHidlImpl.java:460)
+	at com.android.server.wifi.hal.WifiHal.createWifiHalMockable(WifiHal.java:137)
+	at com.android.server.wifi.hal.WifiHal.<init>(WifiHal.java:131)
+	at com.android.server.wifi.HalDeviceManager.getWifiHalMockable(HalDeviceManager.java:192)
+	at com.android.server.wifi.HalDeviceManager.<init>(HalDeviceManager.java:164)
+	at com.android.server.wifi.WifiInjector.<init>(WifiInjector.java:372)
+	at com.android.server.wifi.WifiService.<init>(WifiService.java:44)
+	... 10 more

@@ -1,0 +1,4 @@
+== tap CHECK ==
+== dump after check ==
+ERROR: could not get idle state.
+== verdict summary ==

@@ -1,0 +1,39 @@
+== preflight ==
+Sun Jul  5 21:01:14 CEST 2026
+uid=0(root) gid=0(root) groups=0(root) context=u:r:ksu:s0
+1
+== backups ==
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /data/adb/modules/PixelXpert/disable
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /data/adb/modules/PixelXpert/skip_mount
+6977a96a9c6f08fd01d1cdf4b33edb99e2deb70662e5ca9a26fc489d46b43b1d  /data/adb/lspd/config/modules_config.db
+6977a96a9c6f08fd01d1cdf4b33edb99e2deb70662e5ca9a26fc489d46b43b1d  /data/adb/pixelxpert-stage/pixelxpert-no-mount-20260705/modules_config.db.bak
+2d628629b5126ed3166a9f457ef4950ea64a18bf3a20607a3fc0fca0db9e5381  /data/adb/lspd/config/modules_config.db-wal
+2d628629b5126ed3166a9f457ef4950ea64a18bf3a20607a3fc0fca0db9e5381  /data/adb/pixelxpert-stage/pixelxpert-no-mount-20260705/modules_config.db-wal.bak
+f5e9b9cecceab33980b6dc89526bdc67d242e09e729835244f54db3238f7cf6b  /data/adb/lspd/config/modules_config.db-shm
+f5e9b9cecceab33980b6dc89526bdc67d242e09e729835244f54db3238f7cf6b  /data/adb/pixelxpert-stage/pixelxpert-no-mount-20260705/modules_config.db-shm.bak
+rollback=/data/adb/pixelxpert-stage/pixelxpert-no-mount-20260705/rollback.sh
+== enforce data-app/no-mount module mode ==
+== ensure data app installed ==
+apk=/data/app/~~gdZnIWR3H5bBjMKi-E5ZCg==/sh.siava.pixelxpert-oDshj4ZC89XmHRjXeOZf-Q==/base.apk
+== ensure LSPosed declared scopes ==
+== resulting state ==
+total 732
+drwxr-xr-x  4 root root u:object_r:adb_data_file:s0    3452 2026-07-05 21:01 .
+drwxr-xr-x 18 root root u:object_r:adb_data_file:s0    3452 2026-07-05 18:00 ..
+drwxr-xr-x  3 root root u:object_r:adb_data_file:s0    3452 2026-07-05 13:07 META-INF
+-rw-r--r--  1 root root u:object_r:adb_data_file:s0   10622 2026-07-05 13:07 customize.sh
+-rw-r--r--  1 root root u:object_r:adb_data_file:s0     292 2026-07-05 13:07 module.prop
+-rw-r--r--  1 root root u:object_r:adb_data_file:s0    6376 2026-07-05 13:07 service.sh
+-rw-r--r--  1 root root u:object_r:adb_data_file:s0       0 2026-07-05 21:01 skip_mount
+-rwxr-xr-x  1 root root u:object_r:adb_data_file:s0  709600 2026-07-05 13:07 sqlite3
+drwxr-xr-x  3 root root u:object_r:adb_data_file:s0    3452 2026-07-05 13:07 system
+sh.siava.pixelxpert|/data/app/~~gdZnIWR3H5bBjMKi-E5ZCg==/sh.siava.pixelxpert-oDshj4ZC89XmHRjXeOZf-Q==/base.apk
+sh.siava.pixelxpert|0|1|0
+android|0
+com.android.settings|0
+com.android.systemui|0
+com.google.android.apps.nexuslauncher|0
+com.google.android.dialer|0
+com.rifsxd.ksunext|0
+sh.siava.pixelxpert|0
+activation staged; reboot required for KSU service-script activation semantics

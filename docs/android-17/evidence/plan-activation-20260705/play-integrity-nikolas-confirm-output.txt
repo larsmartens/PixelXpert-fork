@@ -1,0 +1,11 @@
+Starting: Intent { cmp=gr.nikolasspyr.integritycheck/.MainActivity }
+Warning: Activity not started, its current task has been brought to the front
+Status: ok
+LaunchState: HOT
+Activity: gr.nikolasspyr.integritycheck/.MainActivity
+TotalTime: 66
+WaitTime: 68
+Complete
+UI hierchary dumped to: /sdcard/nikolas_after.xml
+== verdict rows ==
+gr.nikolasspyr.integritycheck:id/check_btn

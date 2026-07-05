@@ -60,3 +60,6 @@ local.properties
 /docs/android-17/evidence/install-official-trickystore-20260705.sh
 /docs/android-17/evidence/install-pifork-ci573-20260705.sh
 /docs/android-17/evidence/isolate-play-integrity-nonessential-modules-20260705.sh
+
+# Downloaded module payloads kept only for local device staging evidence.
+/docs/android-17/evidence/*/artifacts/*.zip
