@@ -1,0 +1,199 @@
+## context
+Sun Jul  5 16:09:13 CEST 2026
+uid=0(root) gid=0(root) groups=0(root) context=u:r:ksu:s0
+boot_completed=1
+bootanim=stopped
+
+## current modules
+### PixelXpert
+state=disabled remove=no skip_mount=yes
+drwxr-xr-x 4 root root u:object_r:adb_data_file:s0  3452 2026-07-05 13:07 /data/adb/modules/PixelXpert
+id=PixelXpert
+name=Pixel Xpert
+version=canary-513
+versionCode=513
+author=Pixel Xpert Team
+description=Xposed based module for customizations on Pixel roms. Android 13+
+updateJson=https://cdn.jsdelivr.net/gh/larsmartens/pixelxpert-updates@canary/MagiskModuleUpdate_Xposed.json
+### ViPER4Android-RE-Fork
+state=disabled remove=no skip_mount=no
+drwxr-xr-x 3 root root u:object_r:system_file:s0  3452 2026-07-05 01:48 /data/adb/modules/ViPER4Android-RE-Fork
+id=ViPER4Android-RE-Fork
+name=ViPER4Android RE Fork
+version=8.0
+versionCode=800
+author=pittvandewitt, MrWhite214, Zackptg5, Martmists, Iscle, WSTxda
+description=ViPER4Android Reverse Engineered Fork is an audio enhancing software to provide everyone with a better audio experience
+### adguardcert
+state=disabled remove=no skip_mount=no
+drwxr-xr-x 4 root root u:object_r:system_file:s0  3452 2026-07-05 01:48 /data/adb/modules/adguardcert
+id=adguardcert
+name=AdGuard Certificate
+version=v2.2.0-beta.7
+versionCode=45
+author=AdGuard, Lars Martens
+description=Moves AdGuard's Personal CA certificate from the user store to Android system and Conscrypt trust stores.
+updateJson=https://raw.githubusercontent.com/larsmartens/adguardcert/master/update.json
+### magisk-captive-manager
+state=disabled remove=no skip_mount=no
+drwxr-xr-x 2 root root u:object_r:system_file:s0  3452 2026-06-22 00:07 /data/adb/modules/magisk-captive-manager
+id=magisk-captive-manager
+name=Magisk Captive Manager (MCM)
+version=v2.1.4
+versionCode=214
+author=muink
+description=A Magisk Module aiming to control (change/disable) Android Captive Portal Detection.
+updateJson=https://raw.githubusercontent.com/muink/Magisk-Captive-Manager/master/update.json
+### magisk-tailscaled
+state=disabled remove=no skip_mount=no
+drwxr-xr-x 3 root root u:object_r:system_file:s0  3452 2026-07-05 01:48 /data/adb/modules/magisk-tailscaled
+id=magisk-tailscaled
+name=Magisk Tailscaled
+version=v2.0.0.1
+versionCode=02000001
+author=anasfanani
+description=[ ⏲ 01:48 am | ✘ tailscaled shutting down, service is stopped !!! ] Tailscale. The easiest, most secure way to use WireGuard and 2FA.
+updateJson=https://raw.githubusercontent.com/anasfanani/Magisk-Tailscaled/master/update.json
+### playintegrityfix
+state=enabled remove=no skip_mount=no
+drwxr-xr-x 4 root root u:object_r:system_file:s0  3452 2026-07-04 02:17 /data/adb/modules/playintegrityfix
+id=playintegrityfix
+name=Play Integrity Fork
+version=v17
+versionCode=170000
+author=osm0sis & chiteroman @ xda-developers
+description=Fix <A13 Play Integrity DEVICE verdict
+updateJson=https://raw.githubusercontent.com/osm0sis/PlayIntegrityFork/main/update.json
+### rclone
+state=disabled remove=no skip_mount=no
+drwxr-xr-x 3 root root u:object_r:system_file:s0  3452 2026-07-05 01:48 /data/adb/modules/rclone
+id=rclone
+name=RClone
+version=v1.74.3
+versionCode=36
+author=NewFuture
+description=Magisk module to manage rclone mounts automatically on boot and during operation.
+updateJson=https://github.com/NewFuture/rclone-fuse3-magisk/releases/latest/download/update-arm64-v8a.json
+### rezygisk
+state=disabled remove=no skip_mount=no
+drwxr-xr-x 5 root root u:object_r:system_file:s0  3452 2026-07-05 02:13 /data/adb/modules/rezygisk
+id=rezygisk
+name=ReZygisk
+version=v1.0.0 (515-333d423-release)
+versionCode=515
+author=The PerformanC Organization
+description=Standalone implementation of Zygisk.
+updateJson=https://raw.githubusercontent.com/ThePedroo/RemoteFiles/refs/heads/main/ReZygisk/update.json
+### rvmm-zygisk-mount
+state=disabled remove=no skip_mount=no
+drwxr-xr-x 4 root root u:object_r:system_file:s0  3452 2026-07-05 01:48 /data/adb/modules/rvmm-zygisk-mount
+id=rvmm-zygisk-mount
+name=rvmm-zygisk-mount
+version=v9
+versionCode=9
+author=j-hc
+description=Mounts the RVMM (revanced-magisk-module) modules with Zygisk
+updateJson=https://raw.githubusercontent.com/j-hc/rvmm-zygisk-mount/master/update.json
+### tricky_store
+state=enabled remove=no skip_mount=no
+drwxr-xr-x 2 root root u:object_r:system_file:s0  3452 2026-06-22 00:07 /data/adb/modules/tricky_store
+id=tricky_store
+name=TEESimulator-RS
+version=v6.0.1-282
+versionCode=282
+author=JingMatrix, Enginex0
+description=Software simulation for Android hardware-backed key pairs with key attestation
+updateJson=https://raw.githubusercontent.com/Enginex0/TEESimulator-RS/main/module/update.json
+### unlimitedphotos
+state=disabled remove=no skip_mount=no
+drwxr-xr-x 4 root root u:object_r:system_file:s0  3452 2026-07-05 01:48 /data/adb/modules/unlimitedphotos
+id=unlimitedphotos
+name=Google Photos Unlimited Backup
+version=v2
+versionCode=21001
+author=Rev4N - Credits to osm0sis & chiteroman
+description=Google Photos Unlimited Backup by Spoofing into Pixel XL.
+updateJson=https://raw.githubusercontent.com/Rev4N1/GPhotosUnlimited/main/update.json
+### youtube-morphe-jhc
+state=disabled remove=no skip_mount=no
+drwxr-xr-x 3 root root u:object_r:adb_data_file:s0  3452 2026-07-05 01:33 /data/adb/modules/youtube-morphe-jhc
+id=youtube-morphe-jhc
+name=YouTube Morphe
+version=v20.51.39 (patches 1.31.0.mpp)
+versionCode=20221061
+author=j-hc
+description=⚠️ Keep this module disabled. Mounting is being handled by rvmm-zygisk-mount.
+updateJson=https://raw.githubusercontent.com/j-hc/revanced-magisk-module/update/youtube-morphe-update.json
+### zygisk-detach
+state=disabled remove=no skip_mount=no
+drwxr-xr-x 5 root root u:object_r:system_file:s0  3452 2026-07-05 01:48 /data/adb/modules/zygisk-detach
+id=zygisk-detach
+name=zygisk-detach
+version=v1.23.1
+versionCode=33
+author=j-hc
+description=Detaches installed apps from Play Store
+updateJson=https://raw.githubusercontent.com/j-hc/zygisk-detach/master/update.json
+### zygisk_lsposed
+state=disabled remove=no skip_mount=no
+drwxr-xr-x 5 root root u:object_r:system_file:s0  3452 2026-07-05 01:48 /data/adb/modules/zygisk_lsposed
+id=zygisk_lsposed
+name=LSPosed
+version=v2.1.0 (7769)
+versionCode=7769
+author=LSPosed Developers
+description=Another enhanced implementation of Xposed Framework. Supports Android 8.1 ~ 17. Requires Zygisk enabled.
+updateJson=https://lsposed.zip/update.json
+### zygisk_nohello
+state=disabled remove=no skip_mount=no
+drwxr-xr-x 3 root root u:object_r:system_file:s0  3452 2026-07-05 11:44 /data/adb/modules/zygisk_nohello
+id=zygisk_nohello
+name=Nohello
+version=v0.0.7 (53-4d53ecf-release)
+versionCode=53
+author=mhmrdd
+description=A Zygisk module to hide root.
+updateJson=https://mhmrdd.github.io/01000004/zygisk/nohello.json
+### zygisk_thanox
+state=disabled remove=no skip_mount=no
+drwxr-xr-x 4 root root u:object_r:system_file:s0  3452 2026-06-22 00:07 /data/adb/modules/zygisk_thanox
+id=zygisk_thanox
+name=Zygisk - Thanox
+version=8.6-81-4388196
+versionCode=3391379
+author=Tornaco
+description=Provides hooks for Thanox. Support Android11 & Android12. Requires Magisk 24.0+ and Zygisk
+updateJson=https://raw.githubusercontent.com/larsmartens/Thanox/master/android/android_framework/patch-magisk/update.json
+### zygisksu
+state=enabled remove=no skip_mount=no
+drwxr-xr-x 5 root root u:object_r:system_file:s0  3452 2026-07-05 11:44 /data/adb/modules/zygisksu
+id=zygisksu
+name=Zygisk Next
+version=1.4.2 (789-119aaa0-release)
+versionCode=789
+author=5ec1cff, Nullptr
+description=[✅zygote, Root: ✅KernelSU (33129), ZL] Standalone implementation of Zygisk.
+updateJson=https://api.nullptr.icu/android/zygisk-next/static/update.json
+
+## modules_update
+
+## pixelxpert-stage rollback tree
+
+## module disable marker mtimes
+-rw-r--r-- 1 root root u:object_r:adb_data_file:s0  0 2026-07-05 13:07 /data/adb/modules/PixelXpert/disable
+-rw-r--r-- 1 root root u:object_r:system_file:s0  0 2026-07-05 01:48 /data/adb/modules/ViPER4Android-RE-Fork/disable
+-rw-r--r-- 1 root root u:object_r:system_file:s0  0 2026-07-05 01:48 /data/adb/modules/adguardcert/disable
+-rw-r--r-- 1 root root u:object_r:system_file:s0  0 2026-06-22 00:06 /data/adb/modules/magisk-captive-manager/disable
+-rw-r--r-- 1 root root u:object_r:system_file:s0  0 2026-07-05 01:48 /data/adb/modules/magisk-tailscaled/disable
+-rw-r--r-- 1 root root u:object_r:system_file:s0  0 2026-07-05 01:48 /data/adb/modules/rclone/disable
+-rw-r--r-- 1 root root u:object_r:system_file:s0  0 2026-07-05 11:44 /data/adb/modules/rezygisk/disable
+-rw-r--r-- 1 root root u:object_r:system_file:s0  0 2026-07-05 01:48 /data/adb/modules/rvmm-zygisk-mount/disable
+-rw-r--r-- 1 root root u:object_r:system_file:s0  0 2026-07-05 01:48 /data/adb/modules/unlimitedphotos/disable
+-rw-r--r-- 1 root root u:object_r:adb_data_file:s0  0 2026-07-05 01:33 /data/adb/modules/youtube-morphe-jhc/disable
+-rw-r--r-- 1 root root u:object_r:system_file:s0  0 2026-07-05 01:48 /data/adb/modules/zygisk-detach/disable
+-rw-r--r-- 1 root root u:object_r:system_file:s0  0 2026-07-05 11:44 /data/adb/modules/zygisk_lsposed/disable
+-rw-r--r-- 1 root root u:object_r:system_file:s0  0 2026-07-05 11:44 /data/adb/modules/zygisk_nohello/disable
+-rw-r--r-- 1 root root u:object_r:system_file:s0  0 2026-06-22 00:06 /data/adb/modules/zygisk_thanox/disable
+-rw-r--r-- 1 root root u:object_r:adb_data_file:s0  0 2026-07-05 13:07 /data/adb/modules/PixelXpert/skip_mount
+
+## possible manager/history files
