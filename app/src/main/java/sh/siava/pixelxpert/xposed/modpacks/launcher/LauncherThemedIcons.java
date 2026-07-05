@@ -55,11 +55,11 @@ public class LauncherThemedIcons extends XposedModPack {
 		if(findFieldIfExists(BaseIconFactoryClass.getClazz(), "mIconBitmapSize") == null)
 		{
 			//it's 16qpr2 with built-in generator - no need to patch
-			Xprefs.edit().putBoolean("DisableThemedIconsPref", true).apply();
+			setThemedIconsPrefDisabled(true);
 			return;
 		}
 
-		Xprefs.edit().putBoolean("DisableThemedIconsPref", false).apply();
+		setThemedIconsPrefDisabled(false);
 
 		LauncherAppStateClass
 				.afterConstruction()
@@ -102,5 +102,13 @@ public class LauncherThemedIcons extends XposedModPack {
 			callMethod(getObjectField(iconCache, "iconDb"), "clear");
 			callMethod(getObjectField(LAS, "model"), "forceReload");
 		});
+	}
+
+	private void setThemedIconsPrefDisabled(boolean disabled) {
+		try {
+			Xprefs.edit().putBoolean("DisableThemedIconsPref", disabled).apply();
+		} catch (Throwable t) {
+			log("LauncherThemedIcons: unable to update themed icon preference availability", t);
+		}
 	}
 }
