@@ -11,15 +11,17 @@ This directory records the Android 17 device work on a Pixel 7 Pro (`cheetah`) r
   - staged version: `canary-513`
   - staged CI zip SHA256: `2c26d3a6cd6a7a5f6e7b2ec1047e360af14f8b132c9b9b800f76d7ac2864dc0e`
 - KSU-Next Manager was updated to v3.3.0 and blu_spark was updated to r266 `gs-next`; see `evidence/ksu-next-manager-kernel-update-20260705.md`.
-- The latest checked blu_spark r266 KSU-Next kernel still reports KernelSU `33129`, while userspace is `ksud 3.3.0 (uapi: 2)`.
-- `ksud module list` works, but `ksud module install` fails with a UAPI mismatch. Treat module installs as unsafe until the KSU-Next userspace/kernel mismatch is resolved.
-- Current Zygisk provider state is conservative after Play Integrity experiments:
-  - NeoZygisk v2.3 is installed as `zygisksu` but disabled.
-  - ReZygisk v1.0.0 is installed but disabled.
+- blu_spark r266 still reports kernel-side KSU `33129`, so live KSU userspace and Manager were aligned back to v3.2.0 (`33129`) after v3.3.0 caused `ksud module install` UAPI mismatch failures.
+- The disabled `hybrid_mount` metamodule blocked normal module installation and has been isolated out of `/data/adb/modules`.
+- Current Zygisk provider state after alignment:
+  - Zygisk Next v1.4.2 is installed as `zygisksu`, enabled, and healthy.
+  - PIF v17 is enabled and mapped into `com.google.android.gms.unstable` and `com.android.vending`.
+  - TEESimulator-RS v6.0.1-282 is enabled.
   - LSPosed is disabled.
+  - ReZygisk is disabled.
   - Nohello is disabled.
-- Play Integrity improved from no verdicts to BASIC-only during a ReZygisk manual-start experiment, then the stack was returned to a no-provider stable state. See `evidence/play-integrity-root-stack-20260705.md`.
-- As of the latest validation, the phone idled for 75 seconds with `system_server` running and no new tombstones after disabling NeoZygisk/ReZygisk provider processes.
+- Play Integrity now reaches confirmed PIF/Zygisk injection, but Simple Play Integrity Checker still returned an unevaluated response with no `deviceRecognitionVerdict`. See `evidence/ksu-next-alignment-and-zygisknext-20260705.md`.
+- As of the latest validation, the phone remained stable after the KSU alignment and Zygisk Next enable reboots. No new relevant `system_server` dropbox entries or tombstones appeared; the newest relevant dropbox entry remained from 2026-07-04.
 
 ## Commits On Investigation Branch
 
@@ -88,14 +90,22 @@ Preliminary decision: treat the current unlock reboot as a broader root-stack/LS
 
 ## Play Integrity Findings
 
-Additional 2026-07-05 findings:
+Additional 2026-07-05 findings before KSU alignment:
 
 - PIFork v17 and TEESimulator-RS remain installed, but no active Zygisk provider is currently running.
 - ReZygisk v1.0.0 manual start loaded `playintegrityfix` into `zygiskd64`, but did not inject the 64-bit zygote.
 - That ReZygisk experiment returned only `MEETS_BASIC_INTEGRITY`.
 - NeoZygisk v2.3 manual activation caused Android framework services to remain unavailable after zygote restart until the NeoZygisk monitor/daemon were killed and the module was disabled.
 - Process-map checks showed no PIF/TEESimulator/Zygisk artifacts inside GMS, Play Store, or the checker during the provider-failure tests.
-- Next gate: resolve KSU-Next userspace/kernel mismatch and verify real Zygisk injection before burning more Play Integrity checks.
+- That gate has now been cleared by aligning KSU userspace/Manager to v3.2.0 and installing Zygisk Next v1.4.2 through the normal root-manager path.
+
+Additional 2026-07-05 findings after KSU alignment:
+
+- Zygisk Next v1.4.2 is enabled and reports KernelSU root `33129`.
+- Process maps show PIF and Zygisk Next mapped into `com.google.android.gms.unstable` and `com.android.vending`.
+- Play Integrity still returned an unevaluated/no-verdict response.
+- Logs show TEESimulator activity for GMS, attestation chain rebuilds, StrongBox operation limits, and key-authentication expiry messages.
+- Next gate: do not repeatedly test Play Integrity immediately. After cooldown, investigate TEESimulator/PIF profile and security patch configuration one variable at a time.
 
 Changes made:
 
@@ -133,12 +143,20 @@ Zygisk Next rollback path:
 
 - `/data/adb/zygisk-next-update/backup-20260704-151506/rollback_restore_zygisk_next.sh`
 
+KSU/Zygisk alignment rollback paths:
+
+- `/data/adb/pixelxpert-stage/ksud-align-3-2-0-20260705-113736/rollback-restore-ksud.sh`
+- `/data/adb/pixelxpert-stage/ksunext-manager-downgrade-20260705-113856/rollback-install-ksunext-manager-3-3-0.sh`
+- `/data/adb/pixelxpert-stage/hybridmount-metamodule-isolation-20260705-114125/rollback-restore-hybridmount.sh`
+- `/data/adb/pixelxpert-stage/zygisknext-normal-20260705-114132/rollback-restore-zygisk-provider.sh`
+- `/data/adb/pixelxpert-stage/zygisknext-enable-20260705-114406/rollback-disable-zygisknext.sh`
+
 ## Suggested Next Technical Direction
 
 1. Stabilize the phone first. Because current crashes occur with PixelXpert disabled, isolate root-stack modules before further PixelXpert activation tests.
 2. Inspect the fresh dropbox files from 17:16-17:18 and identify the exact blocked thread and package/module interaction.
 3. Temporarily disable or de-scope third-party LSPosed modules active in `system`, especially unknown/obfuscated modules, then retest unlock stability.
-4. Reassess TEESimulator config after unlock stability. If needed, roll back the Tricky Store target/security patch changes above and retest.
+4. Reassess TEESimulator/PIF config after a cooldown. Confirm whether `security_patch.txt` should report a system patch value instead of `os=-1`, and test only one variable per reboot/check.
 5. For PixelXpert Android 17 compatibility, prototype a non-priv-app install path:
    - keep module zip for native/libs/scripts/root provider only
    - install PixelXpert APK as data app or standard LSPosed module
