@@ -130,11 +130,13 @@ Facts:
 - Android 17 skips `system_server`/framework hook loading by default.
 - Android 17 also skips generated Common, Framework, and Telecom modpacks unless `persist.pixelxpert.a17.unsafe_scopes=1` is set.
 - SystemUI, Launcher, and Dialer hooks are code-allowed, but module scripts no longer auto-scope them on Android 17 unless `a17_enable_default_scopes` exists or scopes are added manually.
+- The Android 17 audio-focus workaround in `XPLauncher` is SDK-gated and uses `runSafe`, so it does not bypass the boot defer path with an exception-propagating callback.
+- Live device class-string evidence is recorded in `device-class-presence-20260705.md`. It confirms the current Launcher taskbar classes and method names are present on `CP2A.260605.012`, confirms one SystemUI shade fallback class is missing while another is present, and shows Telecom server classes are split into the TelephonyCore APEX.
 
 Highest-risk hook areas before broader activation:
 
 - SystemUI shade/scene migration: `ScreenGestures`, `StatusbarGestures`, `QSTileGrid`, `KeyguardMods`, and `StatusbarMods` still depend on direct SystemUI class and method names, with some Android 17 QPR1 fallbacks already present.
-- Launcher: `HideNavigationBarInsets` uses hard reflection instead of optional/safe reflection, `TaskbarActivator` has unguarded method discovery, and navigation gesture hooks rely on R8-unstable Launcher/Quickstep internals.
+- Launcher: `HideNavigationBarInsets` and `TaskbarActivator` now fail closed for the reviewed Android 17 class/method discovery paths, but navigation gesture hooks still rely on R8-unstable Launcher/Quickstep internals.
 - Dialer/Telecom: Dialer resource hooks need resource-name validation; Telecom `CallVibrator` remains Android 17-disabled with the broader Telecom gate.
 
 Tests and CI guards to add:

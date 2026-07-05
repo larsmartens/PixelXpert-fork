@@ -48,6 +48,10 @@ require_grep 'Constants[.]SYSTEM_FRAMEWORK_PACKAGE' app/src/main/java/sh/siava/p
   "Android 17 framework-modpack skip is missing"
 require_grep 'Constants[.]TELECOM_SERVER_PACKAGE' app/src/main/java/sh/siava/pixelxpert/xposed/XPLauncher.java \
   "Android 17 Telecom skip is missing"
+require_grep 'Build[.]VERSION[.]SDK_INT[[:space:]]*<[[:space:]]*37' app/src/main/java/sh/siava/pixelxpert/xposed/XPLauncher.java \
+  "Android 17 audio-focus workaround must stay SDK-gated"
+require_grep 'runSafe[(]instance,param[[:space:]]*->' app/src/main/java/sh/siava/pixelxpert/xposed/XPLauncher.java \
+  "Android 17 audio-focus workaround must use runSafe"
 
 for script in MagiskModBase/customize.sh MagiskModBase/service.sh; do
   require_grep 'a17_enable_privapp_mount' "$script" \
@@ -80,4 +84,12 @@ sort -o "$expected" "$expected"
 if unexpected="$(comm -13 "$expected" "$actual")" && [ -n "$unexpected" ]; then
   echo "$unexpected" >&2
   fail "new hard com.android reflection in boot-sensitive hook code must be reviewed or allowlisted"
+fi
+
+unguarded_method_lookup="$(git grep -n -E 'findFirst[(][)][.]get[(]' -- \
+  app/src/main/java/sh/siava/pixelxpert/xposed/modpacks || true)"
+
+if [ -n "$unguarded_method_lookup" ]; then
+  echo "$unguarded_method_lookup" >&2
+  fail "modpack method discovery must fail closed instead of using findFirst().get()"
 fi
