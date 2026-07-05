@@ -1,0 +1,30 @@
+  bash arg: -p
+  bash arg: sh.siava.pixelxpert
+  bash arg: -c
+  bash arg: android.intent.category.LAUNCHER
+  bash arg: 1
+Events injected: 1
+## Network stats: elapsed time=86ms (0ms mobile, 0ms wifi, 86ms not connected)
+PixelXpertUI True
+chars 5447
+Starting: Intent { act=android.settings.SETTINGS }
+Status: ok
+LaunchState: WARM
+Activity: com.android.settings/.homepage.SettingsHomepageActivity
+TotalTime: 1101
+WaitTime: 1103
+Complete
+Starting: Intent { cmp=com.google.android.dialer/.extensions.GoogleDialtactsActivity }
+Status: ok
+LaunchState: WARM
+Activity: com.google.android.dialer/com.android.dialer.main.impl.MainActivity
+TotalTime: 1228
+WaitTime: 1245
+Complete
+Starting: Intent { cmp=com.rifsxd.ksunext/.ui.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: com.rifsxd.ksunext/.ui.MainActivity
+TotalTime: 1731
+WaitTime: 1738
+Complete

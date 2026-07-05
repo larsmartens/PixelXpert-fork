@@ -1,0 +1,5 @@
+keybox_sha256=4e2008d4c8afbbc0dc3659f8433c14e2c7b7f046d8256afccd387ec3d73fbe64
+target_txt_sha256=d60011412c1c66e9d8496b5e7c90f80631544e4d1c202012ac2393f8ba06a8c6
+target_count=361
+pif_prop_present=false
+note=keybox contents not captured; full target package list intentionally omitted.

@@ -1,0 +1,104 @@
+== identity ==
+uid=0(root) gid=0(root) context=u:r:ksu:s0
+Enforcing
+== installed mount/meta modules ==
+== hybrid data directory ==
+c5a5215f203f4b425df3a61f0bc7ec578a8bd30b00e5d3f20a18df8aec0120d4  /data/adb/hybrid-mount/config.toml
+f63e0fb7ab7038f435d4fefb97cb906e6f75eeeb33df664aa59eec8655b9d9aa  /data/adb/hybrid-mount/module_blacklist.toml
+7fbf99c7de8525e998ae09689366a7b9c90588afb7cfddae6bc70b568bbbd70d  /data/adb/hybrid-mount/run/daemon_state.json
+== hybrid config excerpt ==
+moduledir = "/data/adb/modules"
+mountsource = "KSU"
+overlay_mode = "ext4"
+disable_umount = false
+default_mode = "overlay"
+daemon_startup_mode = "on-demand"
+
+[kasumi]
+enabled = false
+lkm_autoload = true
+lkm_dir = "/data/adb/modules/hybrid_mount/kasumi_lkm"
+lkm_kmi_override = ""
+mirror_path = "/dev/kasumi_mirror"
+enable_kernel_debug = false
+enable_stealth = false
+enable_hidexattr = false
+enable_mount_hide = false
+enable_maps_spoof = false
+enable_statfs_spoof = false
+enable_selinux_fix = false
+hide_uids = []
+uname_mode = "scoped"
+cmdline_value = ""
+kstat_rules = []
+maps_rules = []
+
+[kasumi.mount_hide]
+enabled = false
+path_pattern = ""
+
+[kasumi.statfs_spoof]
+enabled = false
+path = ""
+spoof_f_type = 0
+
+[kasumi.uname]
+sysname = ""
+nodename = ""
+release = ""
+version = ""
+machine = ""
+domainname = ""
+
+[rules.PixelXpert]
+default_mode = "overlay"
+
+[rules.PixelXpert.paths]
+
+[rules.adguardcert]
+default_mode = "magic"
+
+[rules.adguardcert.paths]
+"system/etc/security/cacerts" = "magic"
+"apex/com.android.conscrypt/cacerts" = "magic"
+== hybrid blacklist excerpt ==
+# Copyright (C) 2026 YuzakiKokuban <heibanbaize@gmail.com>
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Hybrid Mount Module Blacklist
+# Modules listed here will be treated as Ignore (skipped during mount).
+# Add one module ID per line. Example:
+# blacklist = ["example_module_id", "another_module_id"]
+
+blacklist = ["AAaTempSpoof", "scene_swap_controller"]
+== active process hints ==
+== active mount hints ==
+== module marker matrix ==
+PixelXpert disable=1 skip_mount=1 mount_error=0 system=1
+ViPER4Android-RE-Fork disable=1 skip_mount=0 mount_error=0 system=1
+adguardcert disable=1 skip_mount=0 mount_error=0 system=1
+magisk-captive-manager disable=1 skip_mount=0 mount_error=0 system=0
+magisk-tailscaled disable=1 skip_mount=0 mount_error=0 system=1
+playintegrityfix disable=0 skip_mount=0 mount_error=0 system=0
+rclone disable=1 skip_mount=0 mount_error=0 system=1
+rezygisk disable=1 skip_mount=0 mount_error=0 system=0
+rvmm-zygisk-mount disable=1 skip_mount=0 mount_error=0 system=0
+tricky_store disable=0 skip_mount=0 mount_error=0 system=0
+unlimitedphotos disable=1 skip_mount=0 mount_error=0 system=1
+youtube-morphe-jhc disable=1 skip_mount=0 mount_error=0 system=0
+zygisk-detach disable=1 skip_mount=0 mount_error=0 system=0
+zygisk_lsposed disable=0 skip_mount=0 mount_error=0 system=0
+zygisk_nohello disable=1 skip_mount=0 mount_error=0 system=0
+zygisk_thanox disable=1 skip_mount=0 mount_error=0 system=1
+zygisksu disable=0 skip_mount=0 mount_error=0 system=0

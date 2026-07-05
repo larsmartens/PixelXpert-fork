@@ -1,0 +1,52 @@
+
+Sun Jul  5 18:07:05 CEST 2026
+tombstones
+total 6452
+-rw-rw-r-- 1 tombstoned system  112350 2026-07-05 18:01 tombstone_03
+-rw-rw-r-- 1 tombstoned system   54302 2026-07-05 18:01 tombstone_03.pb
+-rw-rw-r-- 1 tombstoned system  416967 2026-07-04 15:15 tombstone_02
+-rw-rw-r-- 1 tombstoned system  215407 2026-07-04 15:15 tombstone_02.pb
+-rw-rw-r-- 1 tombstoned system  500094 2026-07-04 02:27 tombstone_01
+-rw-rw-r-- 1 tombstoned system  247706 2026-07-04 02:27 tombstone_01.pb
+-rw-rw-r-- 1 tombstoned system  499751 2026-07-04 02:26 tombstone_00
+-rw-rw-r-- 1 tombstoned system  247473 2026-07-04 02:26 tombstone_00.pb
+-rw-rw-r-- 1 tombstoned system  503907 2026-07-01 00:34 tombstone_07
+-rw-rw-r-- 1 tombstoned system  249686 2026-07-01 00:34 tombstone_07.pb
+-rw-rw-r-- 1 tombstoned system 1036862 2026-06-29 19:33 tombstone_06
+-rw-rw-r-- 1 tombstoned system  593973 2026-06-29 19:33 tombstone_06.pb
+-rw-rw-r-- 1 tombstoned system 1205307 2026-06-29 19:33 tombstone_05
+-rw-rw-r-- 1 tombstoned system  687968 2026-06-29 19:33 tombstone_05.pb
+dropbox_system_server
+-rw------- 1 system system 22298 2026-07-04 18:54 /data/system/dropbox/system_server_pre_watchdog@1783184076537.txt.gz
+-rw------- 1 system system 20479 2026-07-04 17:33 /data/system/dropbox/system_server_pre_watchdog@1783179225869.txt.gz
+-rw------- 1 system system 21702 2026-07-04 17:31 /data/system/dropbox/system_server_watchdog@1783179099073.txt.gz
+-rw------- 1 system system 20543 2026-07-04 17:30 /data/system/dropbox/system_server_pre_watchdog@1783179010948.txt.gz
+-rw------- 1 system system 20805 2026-07-04 17:30 /data/system/dropbox/system_server_anr@1783179007548.txt.gz
+-rw------- 1 system system 23472 2026-07-04 17:29 /data/system/dropbox/system_server_watchdog@1783178964091.txt.gz
+-rw------- 1 system system 20494 2026-07-04 17:27 /data/system/dropbox/system_server_pre_watchdog@1783178874586.txt.gz
+-rw------- 1 system system 20679 2026-07-04 17:27 /data/system/dropbox/system_server_anr@1783178871067.txt.gz
+-rw------- 1 system system 22650 2026-07-04 17:27 /data/system/dropbox/system_server_watchdog@1783178826514.txt.gz
+-rw------- 1 system system 20557 2026-07-04 17:25 /data/system/dropbox/system_server_pre_watchdog@1783178737346.txt.gz
+-rw------- 1 system system 20534 2026-07-04 17:25 /data/system/dropbox/system_server_anr@1783178733994.txt.gz
+-rw------- 1 system system 22627 2026-07-04 17:24 /data/system/dropbox/system_server_watchdog@1783178690296.txt.gz
+-rw------- 1 system system 20599 2026-07-04 17:23 /data/system/dropbox/system_server_pre_watchdog@1783178602039.txt.gz
+-rw------- 1 system system 20574 2026-07-04 17:23 /data/system/dropbox/system_server_anr@1783178600771.txt.gz
+-rw------- 1 system system 22977 2026-07-04 17:22 /data/system/dropbox/system_server_watchdog@1783178555204.txt.gz
+-rw------- 1 system system 20862 2026-07-04 17:21 /data/system/dropbox/system_server_pre_watchdog@1783178464072.txt.gz
+-rw------- 1 system system 20720 2026-07-04 17:21 /data/system/dropbox/system_server_anr@1783178461220.txt.gz
+-rw------- 1 system system 22893 2026-07-04 17:20 /data/system/dropbox/system_server_watchdog@1783178418205.txt.gz
+-rw------- 1 system system 24649 2026-07-04 17:20 /data/system/dropbox/system_server_anr@1783178413874.txt.gz
+-rw------- 1 system system 20639 2026-07-04 17:18 /data/system/dropbox/system_server_pre_watchdog@1783178323478.txt.gz
+-rw------- 1 system system 21069 2026-07-04 17:18 /data/system/dropbox/system_server_anr@1783178303324.txt.gz
+-rw------- 1 system system 21585 2026-07-04 17:17 /data/system/dropbox/system_server_watchdog@1783178255409.txt.gz
+-rw------- 1 system system 22396 2026-07-04 17:16 /data/system/dropbox/system_server_pre_watchdog@1783178203949.txt.gz
+-rw------- 1 system system 21426 2026-07-04 17:16 /data/system/dropbox/system_server_anr@1783178182432.txt.gz
+-rw------- 1 system system 21645 2026-07-04 15:33 /data/system/dropbox/system_server_pre_watchdog@1783172019367.txt.gz
+-rw------- 1 system system 20736 2026-07-04 15:23 /data/system/dropbox/system_server_pre_watchdog@1783171421031.txt.gz
+-rw------- 1 system system 20361 2026-07-04 15:13 /data/system/dropbox/system_server_anr@1783170836633.txt.gz
+-rw------- 1 system system 20521 2026-07-04 14:58 /data/system/dropbox/system_server_anr@1783169901490.txt.gz
+-rw------- 1 system system 20999 2026-07-04 10:42 /data/system/dropbox/system_server_pre_watchdog@1783154521386.txt.gz
+-rw------- 1 system system 20738 2026-07-04 09:33 /data/system/dropbox/system_server_pre_watchdog@1783150392126.txt.gz
+boot_props
+1
+stopped

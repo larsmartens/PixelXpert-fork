@@ -1,0 +1,123 @@
+07-05 18:02:35.730  5064  5068 I keystore2: system/security/keystore2/src/maintenance.rs:613 - clearNamespace(r#APP, nspace=10436)
+07-05 18:03:18.035  5064  8773 I keystore2: system/security/keystore2/watchdog/src/lib.rs:371 - Watchdog thread idle -> terminating. Have a great day.
+07-05 18:03:22.193  5064  5067 I keystore2: system/security/keystore2/src/database.rs:1206 - Setting synchronous=EXTRA
+07-05 18:03:29.977  3235  4845 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 18:03:29.977  3235  4845 W GLSActivity: [GmsAccountAuthenticatorImpl] error status while fetching token:BadAuthentication
+07-05 18:03:30.399  3235  3734 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 18:03:31.883  3235  3248 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 18:03:32.491  3235  4543 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 18:03:32.632  5086  5146 I TEESimulator: [TX_ID: 211] createOperation KeyId(-[REDACTED_NUMBER]) NOT FOUND for uid=10129. Forwarding to HAL.
+07-05 18:03:32.930  3553  6629 W CryptauthV2: [ClientDataOperation] No keyMetadata found for keyName=fido:android_strongbox_key_cable_irk
+07-05 18:03:33.179  3553  6629 W CryptauthV2: [ClientDataOperation] No keyMetadata found for keyName=fido:android_strongbox_key_cable_lk
+07-05 18:03:33.261  3553  6629 W CryptauthV2: [ClientDataOperation] No keyMetadata found for keyName=fido:android_strongbox_key
+07-05 18:03:34.696  3235  4543 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 18:03:34.696  3235  4543 W GLSActivity: [GmsAccountAuthenticatorImpl] error status while fetching token:BadAuthentication
+07-05 18:03:35.575  3235  4543 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 18:03:35.575  3235  4543 W GLSActivity: [GmsAccountAuthenticatorImpl] error status while fetching token:BadAuthentication
+07-05 18:03:35.802  3235  6010 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 18:03:35.803  3235  6010 W NearbyPresence: attempt 0 failed with exception com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication. [CONTEXT service_id=317 ]
+07-05 18:03:35.803  3235  6010 W NearbyPresence: java.util.concurrent.ExecutionException: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 18:03:35.803  3235  6010 W NearbyPresence: Caused by: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 18:03:36.291  3235  6010 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 18:03:36.354  3235  6010 W NearbyPresence: attempt 1 failed with exception com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication. [CONTEXT service_id=317 ]
+07-05 18:03:36.354  3235  6010 W NearbyPresence: java.util.concurrent.ExecutionException: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 18:03:36.354  3235  6010 W NearbyPresence: Caused by: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 18:03:36.610  3553  6995 I CryptauthV2: [ReEnrollmentCryptauthFramework] New keyName: fido:android_strongbox_key
+07-05 18:03:36.859  3235  6010 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 18:03:36.876  3235  6010 W NearbyPresence: attempt 2 failed with exception com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication. [CONTEXT service_id=317 ]
+07-05 18:03:36.876  3235  6010 W NearbyPresence: java.util.concurrent.ExecutionException: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 18:03:36.876  3235  6010 W NearbyPresence: Caused by: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 18:03:36.944  3553  6995 W CryptauthV2: [ClientDataOperation] No keyMetadata found for keyName=fido:android_strongbox_key
+07-05 18:03:37.494  3235  6010 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 18:03:37.542  3235  6010 W NearbyPresence: attempt 3 failed with exception com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication. [CONTEXT service_id=317 ]
+07-05 18:03:37.542  3235  6010 W NearbyPresence: java.util.concurrent.ExecutionException: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 18:03:37.542  3235  6010 W NearbyPresence: Caused by: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 18:03:38.080  3235  6010 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 18:03:38.194  3235  6010 W NearbyPresence: attempt 4 failed with exception com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication. [CONTEXT service_id=317 ]
+07-05 18:03:38.194  3235  6010 W NearbyPresence: java.util.concurrent.ExecutionException: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 18:03:38.194  3235  6010 W NearbyPresence: Caused by: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 18:03:38.259  3235  6010 W NearbyPresence: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 18:03:38.315  5086  5146 I TEESimulator: [TX_ID: 221] createOperation KeyId([REDACTED_NUMBER]) NOT FOUND for uid=10129. Forwarding to HAL.
+07-05 18:03:38.458  3235 10169 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 18:03:38.662  3553  8972 I CryptauthV2: [ReEnrollmentCryptauthFramework] New keyName: fido:android_strongbox_key
+07-05 18:03:38.717  3235 10169 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 18:03:38.743  3553  9494 E Checkin : [AccountModule] Unrecoverable authentication exception: 49530: GetToken failed with status code and recovery intent: BadAuthentication.
+07-05 18:03:38.743  3553  9494 E Checkin : com.google.android.gms.auth.UserRecoverableAuthException: 49530: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 18:03:39.124  3553  8972 W CryptauthV2: [ClientDataOperation] No keyMetadata found for keyName=fido:android_strongbox_key
+07-05 18:03:39.589  5086  5146 I TEESimulator: Generating software key for [REDACTED]
+07-05 18:03:39.589  5086  5146 I TEESimulator: Using EC keybox keybox.xml; attestation cert serials (hex): [REDACTED]
+07-05 18:03:39.597  5086  5146 I TEESimulator: NativeCertGen: generated key pair successfully (4 certs)
+07-05 18:03:39.626  3553 10896 I RecoverableKeyStoreGms: (REDACTED) [GetSyncStatusOperation] GetSyncStatusOperation: %s
+07-05 18:03:39.655  5086  5146 I TEESimulator: [TX_ID: 224] Found generated response for checkin_attestation:
+07-05 18:03:39.661  5086  5146 I TEESimulator: [TX_ID: 225] Found generated response for checkin_attestation:
+07-05 18:03:39.667  5086  5146 I TEESimulator: [TX_ID: 226] Found generated response for checkin_attestation:
+07-05 18:03:39.722  3553  9494 W KeyAttestationHandler: Certificate chain has 4 numbers of certificates [CONTEXT service_id=130 ]
+07-05 18:03:39.723  3553  9494 W KeyAttestationHandler: Certificate chain has payload byte size 3755 [CONTEXT service_id=130 ]
+07-05 18:03:39.730  5086  5146 I TEESimulator: [TX_ID: 227] Found generated response for checkin_attestation:
+07-05 18:03:39.758  5086  5146 I TEESimulator: [TX_ID: 228] Deleted cached keypair checkin_attestation, replying with empty response.
+07-05 18:03:39.891  5086  5146 I TEESimulator: [TX_ID: 230] createOperation KeyId([REDACTED_NUMBER]) NOT FOUND for uid=10129. Forwarding to HAL.
+07-05 18:03:40.034  5086  5146 I TEESimulator: [TX_ID: 231] createOperation KeyId([REDACTED_NUMBER]) NOT FOUND for uid=10129. Forwarding to HAL.
+07-05 18:03:40.274  5086  5146 I TEESimulator: [TX_ID: 232] createOperation KeyId([REDACTED_NUMBER]) NOT FOUND for uid=10129. Forwarding to HAL.
+07-05 18:03:41.618  5086  5146 I TEESimulator: Generating software key for [REDACTED]
+07-05 18:03:41.618  5086  5146 I TEESimulator: Using EC keybox keybox.xml; attestation cert serials (hex): [REDACTED]
+07-05 18:03:41.628  5086  5146 I TEESimulator: NativeCertGen: generated key pair successfully (4 certs)
+07-05 18:03:41.920  5086  5146 I TEESimulator: [TX_ID: 235] Found generated response for 1kqsEcgPTeoD89N54DRYV82MJoHYpoGMI8Q9N36qqSM:
+07-05 18:03:41.923  5086  5146 I TEESimulator: [TX_ID: 236] Found generated response for 1kqsEcgPTeoD89N54DRYV82MJoHYpoGMI8Q9N36qqSM:
+07-05 18:03:41.974  5086  5146 I TEESimulator: [TX_ID: 238] Found generated response for 1kqsEcgPTeoD89N54DRYV82MJoHYpoGMI8Q9N36qqSM:
+07-05 18:03:42.044  5086  5146 I TEESimulator: [TX_ID: 239] createOperation KeyId([REDACTED_NUMBER]) NOT FOUND for uid=10129. Forwarding to HAL.
+07-05 18:03:42.140  5086  5146 I TEESimulator: [TX_ID: 240] createOperation KeyId([REDACTED_NUMBER]) NOT FOUND for uid=10129. Forwarding to HAL.
+07-05 18:03:42.157  5086  5146 I TEESimulator: [TX_ID: 241] createOperation KeyId([REDACTED_NUMBER]) NOT FOUND for uid=10129. Forwarding to HAL.
+07-05 18:03:43.751  5086  5146 I TEESimulator: [TX_ID: 244] createOperation KeyId([REDACTED_NUMBER]) NOT FOUND for uid=10129. Forwarding to HAL.
+07-05 18:03:43.919  5086  5146 I TEESimulator: [TX_ID: 245] createOperation KeyId([REDACTED_NUMBER]) NOT FOUND for uid=10129. Forwarding to HAL.
+07-05 18:03:44.056  5086  5146 I TEESimulator: [TX_ID: 246] createOperation KeyId([REDACTED_NUMBER]) NOT FOUND for uid=10129. Forwarding to HAL.
+07-05 18:03:44.426  5086  5146 I TEESimulator: [TX_ID: 250] createOperation KeyId(-[REDACTED_NUMBER]) NOT FOUND for uid=10129. Forwarding to HAL.
+07-05 18:03:44.627  3553  3750 W CryptauthV2: [ClientDataOperation] No keyMetadata found for keyName=fido:android_strongbox_key_cable_irk
+07-05 18:03:44.750  3553  3750 W CryptauthV2: [ClientDataOperation] No keyMetadata found for keyName=fido:android_strongbox_key_cable_lk
+07-05 18:03:44.761  3553  3750 W CryptauthV2: [ClientDataOperation] No keyMetadata found for keyName=fido:android_strongbox_key
+07-05 18:03:45.427  5086  5146 I TEESimulator: [TX_ID: 253] createOperation KeyId([REDACTED_NUMBER]) NOT FOUND for uid=10129. Forwarding to HAL.
+07-05 18:03:45.514  5086  5146 I TEESimulator: [TX_ID: 254] createOperation KeyId([REDACTED_NUMBER]) NOT FOUND for uid=10129. Forwarding to HAL.
+07-05 18:03:45.587  5086  5146 I TEESimulator: [TX_ID: 255] createOperation KeyId([REDACTED_NUMBER]) NOT FOUND for uid=10129. Forwarding to HAL.
+07-05 18:03:46.350  5086  5146 I TEESimulator: [TX_ID: 256] Skip patching short certificate chain of length null.
+07-05 18:03:46.361  5086  5146 I TEESimulator: [TX_ID: 257] Skip patching short certificate chain of length null.
+07-05 18:03:46.379  5086  5146 I TEESimulator: [TX_ID: 258] Skip patching short certificate chain of length null.
+07-05 18:03:46.382  5086  5146 I TEESimulator: [TX_ID: 259] createOperation KeyId([REDACTED_NUMBER]) NOT FOUND for uid=10382. Forwarding to HAL.
+07-05 18:03:46.591  5086  5146 I TEESimulator: [TX_ID: 262] createOperation KeyId([REDACTED_NUMBER]) NOT FOUND for uid=10129. Forwarding to HAL.
+07-05 18:03:46.796  5086  5146 I TEESimulator: [TX_ID: 263] createOperation KeyId([REDACTED_NUMBER]) NOT FOUND for uid=10129. Forwarding to HAL.
+07-05 18:03:46.878  5086  5146 I TEESimulator: [TX_ID: 264] createOperation KeyId([REDACTED_NUMBER]) NOT FOUND for uid=10129. Forwarding to HAL.
+07-05 18:03:47.795  5086  5146 I TEESimulator: [TX_ID: 269] createOperation KeyId([REDACTED_NUMBER]) NOT FOUND for uid=10129. Forwarding to HAL.
+07-05 18:03:47.890  5086  5146 I TEESimulator: [TX_ID: 270] createOperation KeyId([REDACTED_NUMBER]) NOT FOUND for uid=10129. Forwarding to HAL.
+07-05 18:03:47.969  3553  3750 W CryptauthV2: [ClientDataOperation] No keyMetadata found for keyName=fido:android_strongbox_key_cable_irk
+07-05 18:03:47.975  3553  3750 W CryptauthV2: [ClientDataOperation] No keyMetadata found for keyName=fido:android_strongbox_key_cable_lk
+07-05 18:03:48.018  5086  5146 I TEESimulator: [TX_ID: 271] createOperation KeyId([REDACTED_NUMBER]) NOT FOUND for uid=10129. Forwarding to HAL.
+07-05 18:03:48.212  3235  7195 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 18:03:48.235  3235  6010 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 18:03:48.256  3553  3750 W CryptauthV2: Caused by: com.google.android.gms.auth.UserRecoverableAuthException: 49530: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 18:03:48.280  3235  6010 W NearbyPresence: attempt 0 failed with exception com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication. [CONTEXT service_id=317 ]
+07-05 18:03:48.280  3235  6010 W NearbyPresence: java.util.concurrent.ExecutionException: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 18:03:48.280  3235  6010 W NearbyPresence: Caused by: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 18:03:48.850  3235  6010 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 18:03:48.860  3235  6010 W NearbyPresence: attempt 1 failed with exception com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication. [CONTEXT service_id=317 ]
+07-05 18:03:48.860  3235  6010 W NearbyPresence: java.util.concurrent.ExecutionException: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 18:03:48.860  3235  6010 W NearbyPresence: Caused by: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 18:03:49.443  3553 11223 W CryptauthV2: [ClientDataOperation] No keyMetadata found for keyName=fido:android_strongbox_key_cable_irk
+07-05 18:03:49.607  3553 11223 W CryptauthV2: [ClientDataOperation] No keyMetadata found for keyName=fido:android_strongbox_key_cable_lk
+07-05 18:03:49.677  3235  6010 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 18:03:49.731  3235  6010 W NearbyPresence: attempt 2 failed with exception com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication. [CONTEXT service_id=317 ]
+07-05 18:03:49.731  3235  6010 W NearbyPresence: java.util.concurrent.ExecutionException: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 18:03:49.731  3235  6010 W NearbyPresence: Caused by: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 18:03:51.425  3235  6010 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 18:03:51.429  3235  6010 W NearbyPresence: attempt 3 failed with exception com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication. [CONTEXT service_id=317 ]
+07-05 18:03:51.429  3235  6010 W NearbyPresence: java.util.concurrent.ExecutionException: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 18:03:51.429  3235  6010 W NearbyPresence: Caused by: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 18:03:51.437  5086  5161 I TEESimulator: Configuration file change detected: target.txt.tmp (event: 8)
+07-05 18:03:51.450  5086  5161 I TEESimulator: Configuration file change detected: target.txt (event: 128)
+07-05 18:03:51.455  5086  5161 I TEESimulator: Successfully loaded 361 package configurations.
+07-05 18:03:51.893  3235  6010 W Auth    : aiio: GetToken failed with status code and recovery intent: BadAuthentication
+07-05 18:03:51.907  3235  6010 W NearbyPresence: attempt 4 failed with exception com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication. [CONTEXT service_id=317 ]
+07-05 18:03:51.907  3235  6010 W NearbyPresence: java.util.concurrent.ExecutionException: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 18:03:51.907  3235  6010 W NearbyPresence: Caused by: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 18:03:51.919  3235  6010 W NearbyPresence: com.google.android.gms.auth.UserRecoverableAuthException: BadAuthentication
+07-05 18:03:53.196  3553 11223 W CryptauthV2: [ClientDataOperation] No keyMetadata found for keyName=fido:android_strongbox_key_cable_irk
+07-05 18:03:53.322  3553 11223 W CryptauthV2: [ClientDataOperation] No keyMetadata found for keyName=fido:android_strongbox_key_cable_lk
+07-05 18:03:56.228  3553 11223 W CryptauthV2: [ClientDataOperation] No keyMetadata found for keyName=fido:android_strongbox_key_cable_irk
+07-05 18:03:56.282  3553 11223 W CryptauthV2: [ClientDataOperation] No keyMetadata found for keyName=fido:android_strongbox_key_cable_lk
