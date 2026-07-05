@@ -7,6 +7,8 @@ import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Rect;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.SystemClock;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -88,7 +90,7 @@ public class StatusbarGestures extends XposedModPack {
 				.afterConstruction()
 				.runSafe(param -> ShadeInteractorSceneContainerImpl = param.thisObject);
 
-		mGestureDetector = new GestureDetector(mContext, getPullDownLPListener());
+		mGestureDetector = new GestureDetector(mContext, getPullDownLPListener(), new Handler(Looper.getMainLooper()));
 
 		PhoneStatusBarViewClass
 				.after("onTouchEvent")
@@ -103,7 +105,7 @@ public class StatusbarGestures extends XposedModPack {
 					mGestureDetector.onTouchEvent(event);
 				});
 
-		GestureDetector pullUpDetector = new GestureDetector(mContext, getPullUpListener());
+		GestureDetector pullUpDetector = new GestureDetector(mContext, getPullUpListener(), new Handler(Looper.getMainLooper()));
 
 		final long[] lastPullupTouchTime = {0};
 

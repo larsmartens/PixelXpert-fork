@@ -1,0 +1,11 @@
+timestamp=20260705-234625
+rollback=/data/adb/pixelxpert-stage/pixelxpert-hooks-nonsystemserver-20260705-234625/rollback.sh /data/adb/pixelxpert-stage/pixelxpert-hooks-nonsystemserver-20260705-234625
+disable_hooks_after=0
+unsafe_scopes_after=0
+scope_after=
+com.android.settings
+com.android.systemui
+com.google.android.apps.nexuslauncher
+com.google.android.dialer
+com.rifsxd.ksunext
+sh.siava.pixelxpert

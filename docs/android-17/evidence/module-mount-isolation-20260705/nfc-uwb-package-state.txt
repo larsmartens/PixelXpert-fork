@@ -1,0 +1,14 @@
+---
+package:com.google.android.uwb.resources.pixel
+package:com.android.nfc.overlay
+package:com.google.android.uwb.resources
+package:com.qorvo.uwb.vendorservice
+package:com.google.android.nfc.overlay.common
+package:com.google.android.nfc
+package:com.android.nfc
+package:com.google.android.pixelnfc
+package:com.google.android.apps.walletnfcrel
+package:de.tu_darmstadt.seemoo.nfcgate
+package:com.google.android.nfc.overlay
+package:com.wakdev.nfctools.pro
+package:com.kieronquinn.app.classicpowermenu

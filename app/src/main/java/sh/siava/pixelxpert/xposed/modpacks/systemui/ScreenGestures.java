@@ -91,7 +91,7 @@ public class ScreenGestures extends XposedModPack {
 				sleep();
 				return true;
 			}
-		});
+		}, new Handler(Looper.getMainLooper()));
 
 		ReflectedClass NotificationShadeWindowViewControllerClass = ReflectedClass.ofIfPossible("com.android.systemui.shade.NotificationShadeWindowViewController");
 		ReflectedClass NotificationPanelViewControllerClass = ReflectedClass.ofIfPossible("com.android.systemui.shade.NotificationPanelViewController");

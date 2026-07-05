@@ -1,0 +1,11 @@
+timestamp=20260705-233846
+rollback=/data/adb/pixelxpert-stage/safe-module-baseline-20260705-233846/rollback.sh /data/adb/pixelxpert-stage/safe-module-baseline-20260705-233846
+
+PixelXpert state=enabled skip_mount=1 a17_enable_privapp_mount=0
+hybrid_mount state=disabled skip_mount=0 a17_enable_privapp_mount=0
+ViPER4Android-RE-Fork state=disabled skip_mount=0 a17_enable_privapp_mount=0
+adguardcert state=enabled skip_mount=0 a17_enable_privapp_mount=0
+magisk-tailscaled state=enabled skip_mount=0 a17_enable_privapp_mount=0
+rclone state=disabled skip_mount=0 a17_enable_privapp_mount=0
+unlimitedphotos state=disabled skip_mount=0 a17_enable_privapp_mount=0
+zygisk_thanox state=disabled skip_mount=0 a17_enable_privapp_mount=0

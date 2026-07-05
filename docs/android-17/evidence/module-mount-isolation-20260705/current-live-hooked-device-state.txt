@@ -1,0 +1,5 @@
+boot=1
+hooks=0
+unsafe=0
+systemui=7470
+pixelxpert=8286
