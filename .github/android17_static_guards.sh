@@ -74,7 +74,6 @@ git grep -n -E 'ReflectedClass[.]of[(]"com[.]android[.]' -- \
 
 cat > "$expected" <<'EOF'
 app/src/main/java/sh/siava/pixelxpert/xposed/XPLauncher.java:ReflectedClass PhoneWindowManagerClass = ReflectedClass.of("com.android.server.policy.PhoneWindowManager");
-app/src/main/java/sh/siava/pixelxpert/xposed/modpacks/launcher/HideNavigationBarInsets.java:ReflectedClass TaskbarActivityContextClass = ReflectedClass.of("com.android.launcher3.taskbar.TaskbarActivityContext");
 EOF
 sort -o "$expected" "$expected"
 

@@ -32,17 +32,22 @@ public class HideNavigationBarInsets extends XposedModPack {
 
     @Override
     public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
-        ReflectedClass TaskbarActivityContextClass = ReflectedClass.of("com.android.launcher3.taskbar.TaskbarActivityContext");
+        ReflectedClass TaskbarActivityContextClass = ReflectedClass.ofIfPossible("com.android.launcher3.taskbar.TaskbarActivityContext");
         TaskbarActivityContextClass
                 .before("notifyUpdateLayoutParams")
-                .run(param -> {
+                .runSafe(param -> {
                     if (!HideNavbarInsets)
                         return;
 
                     WindowManager.LayoutParams layoutParams = (WindowManager.LayoutParams) XposedHelpers.getObjectField(param.thisObject, "mWindowLayoutParams");
                     transformLayoutParams(layoutParams);
 
-                    WindowManager.LayoutParams[] rotationParams = (WindowManager.LayoutParams[]) XposedHelpers.getObjectField(layoutParams, "paramsForRotation");
+                    WindowManager.LayoutParams[] rotationParams;
+                    try {
+                        rotationParams = (WindowManager.LayoutParams[]) XposedHelpers.getObjectField(layoutParams, "paramsForRotation");
+                    } catch (Throwable ignored) {
+                        return;
+                    }
                     if (rotationParams == null)
                         return;
 
@@ -55,7 +60,12 @@ public class HideNavigationBarInsets extends XposedModPack {
         if (layoutParams == null)
             return;
 
-        Object providedInsets = XposedHelpers.getObjectField(layoutParams, "providedInsets");
+        Object providedInsets;
+        try {
+            providedInsets = XposedHelpers.getObjectField(layoutParams, "providedInsets");
+        } catch (Throwable ignored) {
+            return;
+        }
         if (providedInsets == null)
             return;
 
