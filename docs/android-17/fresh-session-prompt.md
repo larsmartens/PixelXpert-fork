@@ -9,13 +9,17 @@ Important current state:
 - PixelXpert is currently DISABLED on-device via /data/adb/modules/PixelXpert/disable.
 - The latest PixelXpert CI artifact for commit 1cf3ba9b built successfully, but on-device testing still stalled boot even when LSPosed scope was only sh.siava.pixelxpert.
 - Therefore do not assume the remaining PixelXpert boot problem is SystemUI/Launcher/Dialer hook scope. Investigate the /system/priv-app/PixelXpert mount/package-scan path, LSPosed/Vector behavior, and Android 17 package manager/system_server interactions.
-- The phone currently crashes/restarts about a minute after unlock even with PixelXpert disabled. Treat this as a separate current root-stack instability until proven related.
-- Current Play Integrity status is NO_INTEGRITY despite PIF v17, Zygisk Next v1.4.2, and TEESimulator-RS v6.0.1-282. Do not print or commit keybox contents.
+- KSU-Next Manager was updated to v3.3.0 and blu_spark was updated to r266 gs-next. r266 still reports KernelSU 33129, so userspace is newer than the kernel integration. `ksud module list` works, but `ksud module install` fails with a UAPI mismatch.
+- Current Zygisk provider state is intentionally conservative: NeoZygisk v2.3 is installed as zygisksu but disabled, ReZygisk v1.0.0 is installed but disabled, LSPosed is disabled, Nohello is disabled.
+- Play Integrity testing reached BASIC-only during a manual ReZygisk start, but process maps showed no PIF/TEESimulator/Zygisk artifacts inside GMS/Play Store/checker. NeoZygisk manual activation broke framework service startup until its monitor/daemon were killed and the module was disabled.
+- Do not print or commit keybox contents.
 - Root framework preference: stay on KSU/KSU-Next. If researching kernels, compare KSU-Next and KSU+SUSFS options for Pixel 7 Pro/cheetah, including blu_spark if still relevant. Do not switch to Magisk/APatch as a solution unless explicitly asked.
 
 Read these repo files first:
 - docs/android-17/README.md
 - docs/android-17/evidence/current-state-snapshot-20260704-171859.md
+- docs/android-17/evidence/ksu-next-manager-kernel-update-20260705.md
+- docs/android-17/evidence/play-integrity-root-stack-20260705.md
 - docs/android16-stability.md
 - app/src/main/java/sh/siava/pixelxpert/xposed/XPLauncher.java
 - app/src/main/java/sh/siava/pixelxpert/xposed/XPrefs.java
