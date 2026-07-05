@@ -107,8 +107,8 @@ public class LauncherThemedIcons extends XposedModPack {
 	private void setThemedIconsPrefDisabled(boolean disabled) {
 		try {
 			Xprefs.edit().putBoolean("DisableThemedIconsPref", disabled).apply();
-		} catch (Throwable t) {
-			log("LauncherThemedIcons: unable to update themed icon preference availability", t);
+		} catch (Throwable ignored) {
+			// This only updates preference UI availability; it must not abort launcher hooks.
 		}
 	}
 }
