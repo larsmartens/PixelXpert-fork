@@ -43,7 +43,9 @@ jobs:
           grep -q 'touch.*skip_mount' MagiskModBase/service.sh
 
       - name: Guard Android 17 boot-safe architecture
-        run: bash .github/android17_static_guards.sh
+        run: |
+          bash .github/android17_static_guards.sh
+          bash .github/android17_modpack_inventory.sh
 
       - name: Guard canonical owner URLs
         run: |
