@@ -24,6 +24,11 @@ Device: Pixel 7 Pro, Android 17 CP2A.260605.012, SDK 37, blu_spark KSU-Next.
 - After the final reinstall, PixelXpert's package UID changed to `10439`. The LSPosed `modules_config.db` row was updated to the current `/data/app/.../base.apk` path again.
 - Final filtered LSPosed/logcat evidence showed PixelXpert records in `com.android.systemui`, `com.android.settings`, `com.google.android.apps.nexuslauncher`, `com.google.android.dialer`, and `sh.siava.pixelxpert` without the earlier SystemUI thread-affinity failures, Launcher preference probe abort, or custom-text keyguard crash signature.
 - Final crash evidence after the last PixelXpert reboot showed no new `system_server_crash`, `system_server_watchdog`, `system_server_pre_watchdog`, `system_server_anr`, or newer tombstone entries.
+- KernelSU-Next manager/userspace v3.3.0 / `33214` installs, but it is not compatible with the currently installed blu_spark r266 kernel: `ksud module install` reports `UAPI version mismatch: kernel=0, ksud=2`. The device was restored to KernelSU-Next v3.2.0 / `33129`, which matches the kernel and allows module installation again.
+- No newer public blu_spark Pixel 7 Pro Android 17 kernel than r266 was found during the 2026-07-06 check. Do not move userspace back to KSU-Next v3.3 until a compatible kernel is available.
+- V4A, rclone, and unlimitedphotos module markers were re-enabled after restoring KSU-Next v3.2.0. Without Hybrid Mount, their expected live system-tree targets remain absent; AdGuard certificate mounts directly through KSU and does not require Hybrid Mount on this stack.
+- Reinstalling Hybrid Mount Lite v4.2.0-1815 through `ksud module install` works on KSU-Next v3.2.0, but the default overlay plan is not boot-safe on this device. The daemon overlaid `system`, `vendor`, and `product` for `ViPER4Android-RE-Fork`, `magisk-tailscaled`, and `unlimitedphotos`, magic-mounted `adguardcert`, and skipped `PixelXpert`.
+- The Hybrid Mount full-overlay test produced repeated `system_server_crash` entries during boot. The latest crash was `WifiService` startup failing because the Wi-Fi HIDL service manager lookup returned no service. Tombstones from the same window included repeated `audioserver` SIGSEGV entries. After Hybrid was disabled and the daemon process was stopped, the phone reached `sys.boot_completed=1` and no newer `system_server_crash` appeared after the 01:22 boot.
 
 ## Current Device State After Isolation
 
@@ -37,8 +42,11 @@ Device: Pixel 7 Pro, Android 17 CP2A.260605.012, SDK 37, blu_spark KSU-Next.
 - Android 17 unsafe hooks disabled: `persist.pixelxpert.a17.unsafe_scopes=0`
 - PixelXpert LSPosed scope excludes `android` and includes SystemUI, Settings, Launcher, Dialer, KSU manager packages, and PixelXpert self-scope
 - Hybrid Mount disabled
-- AdGuard cert and tailscaled enabled
-- V4A, rclone, unlimitedphotos, Thanox disabled pending isolated fixes
+- Hybrid Mount daemon stopped after it continued running despite the disable marker
+- AdGuard cert, tailscaled, V4A, rclone, and unlimitedphotos module markers enabled
+- AdGuard certificate live mounts present under `/system/etc/security/cacerts` and `/apex/com.android.conscrypt*/cacerts` through direct KSU mounts
+- V4A, rclone, and unlimitedphotos expected live paths absent pending isolated module-specific fixes
+- Thanox disabled pending separate work
 - Qorvo UWB vendor service disabled for user 0; rollback is available on-device
 - Final validation after reconnect: the phone booted with PixelXpert installed as a data app, PixelXpert KSU module enabled in `skip_mount` mode, hooks enabled, and LSPosed loading PixelXpert in all active non-system_server scopes. The last screen-unlock idle window was not repeated after the final CI APK because the lock-screen PIN bouncer did not focus reliably over adb, but process/log evidence showed the target scopes loaded and crash evidence stayed clean.
 
@@ -58,6 +66,16 @@ Device: Pixel 7 Pro, Android 17 CP2A.260605.012, SDK 37, blu_spark KSU-Next.
   `/data/adb/pixelxpert-stage/install-ci-patched-apk-full-reinstall-20260706-004945/rollback.sh /data/adb/pixelxpert-stage/install-ci-patched-apk-full-reinstall-20260706-004945`
 - Restore pre-final-CI LSPosed DB:
   `/data/adb/pixelxpert-stage/lsposed-pixelxpert-db-20260706-005004/rollback.sh /data/adb/pixelxpert-stage/lsposed-pixelxpert-db-20260706-005004`
+- Restore KSU-Next v3.3.0 userspace state if a compatible kernel is installed later:
+  `/data/adb/pixelxpert-stage/restore-ksunext-320-compatible-20260706/rollback.sh /data/adb/pixelxpert-stage/restore-ksunext-320-compatible-20260706`
+- Restore pre-v3.3 KernelSU-Next manager app state:
+  `/data/adb/pixelxpert-stage/ksunext-manager-33214-20260706/rollback.sh /data/adb/pixelxpert-stage/ksunext-manager-33214-20260706`
+- Restore module marker state from before V4A, rclone, and unlimitedphotos were re-enabled:
+  `/data/adb/pixelxpert-stage/restore-known-modules-20260706/rollback.sh`
+- Roll back the Hybrid Mount Lite reinstall:
+  `/data/adb/pixelxpert-stage/reinstall-hybrid-lite-ksud-20260706/rollback.sh /data/adb/pixelxpert-stage/reinstall-hybrid-lite-ksud-20260706`
+- Disable Hybrid Mount after a stalled boot:
+  `/data/adb/pixelxpert-stage/disable-hybrid-marker-20260706/output.txt` records the marker write; if needed, create `/data/adb/modules/hybrid_mount/disable` from recovery/root shell and reboot.
 
 ## Code Fixes Added
 
@@ -74,7 +92,9 @@ Device: Pixel 7 Pro, Android 17 CP2A.260605.012, SDK 37, blu_spark KSU-Next.
 3. If Android is booted, verify `sys.boot_completed`, `init.svc.bootanim`, and root with `su -c id`.
 4. Re-check PixelXpert's live data APK hash and LSPosed `modules_config.db` path if another reinstall occurs.
 5. Keep `android` out of PixelXpert scope unless a separate system_server-safe staged plan is ready.
-6. For the next risky module changes, stage/install first, keep rollback scripts ready, reboot once per variable, and verify dropbox/tombstones after an idle window.
+6. Keep KSU-Next userspace at v3.2.0 / `33129` until a blu_spark or other cheetah Android 17 kernel exposes the UAPI expected by v3.3.0 / `33214`.
+7. Do not enable Hybrid Mount in its default overlay configuration. The next Hybrid test must blacklist every module except one candidate, start with direct AdGuard omitted because it already works through KSU, and verify boot/dropbox/tombstones after each single-module change.
+8. For the next risky module changes, stage/install first, keep rollback scripts ready, reboot once per variable, and verify dropbox/tombstones after an idle window.
 
 ## Not Committed
 
