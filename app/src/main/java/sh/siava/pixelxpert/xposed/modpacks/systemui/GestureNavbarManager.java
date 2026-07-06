@@ -61,6 +61,8 @@ public class GestureNavbarManager extends XposedModPack {
 		BackPanelControllerClass
 				.before("onMotionEvent")
 				.runSafe(param -> {
+					if(EdgeBackGestureHandler == null) return;
+
 					MotionEvent ev = (MotionEvent) param.args[0];
 
 					if(ev.getActionMasked() == ACTION_DOWN) //down action is enough. once gesture is refused it won't accept further actions
