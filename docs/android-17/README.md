@@ -4,7 +4,7 @@ Date: 2026-07-05
 
 This directory records the Android 17 device work on a Pixel 7 Pro (`cheetah`) running build `CP2A.260605.012`, SDK 37, with KSU-Next, Zygisk providers, LSPosed/Vector, Play Integrity modules, and PixelXpert's Android 17 boot-safe architecture.
 
-Latest validation: see `module-integrity-validation-20260706.md`. That newer note supersedes the 2026-07-05 state for Hybrid Mount, PixelXpert module markers, and the Play Integrity stack.
+Latest validation: see `module-integrity-validation-20260706.md`. That newer note supersedes the 2026-07-05 state for Hybrid Mount, PixelXpert module markers, and the Play Integrity stack. TLS unpinning preparation for AdGuard per-app filtering is recorded in `unpinning-prep-20260706.md`.
 
 ## Current Device State
 
@@ -26,6 +26,7 @@ Latest validation: see `module-integrity-validation-20260706.md`. That newer not
 - KSU-Next Manager was updated to v3.3.0 and blu_spark was updated to r266 `gs-next`; see `evidence/ksu-next-manager-kernel-update-20260705.md`.
 - blu_spark r266 still reports kernel-side KSU `33129`, so live KSU userspace and Manager were aligned back to v3.2.0 (`33129`) after v3.3.0 caused `ksud module install` UAPI mismatch failures.
 - Hybrid Mount Lite is active again as module id `hybrid_mount`, version `4.2.0-1815`. The 2026-07-06 validation has Unlimited Photos, AdGuard certificate, and rclone using Hybrid magic markers.
+- SSL Killer `2.0 Beta` is installed as a dormant LSPosed unpinning candidate. It is not enabled or scoped in LSPosed. See `unpinning-prep-20260706.md`.
 - Current enabled module stack after the 2026-07-06 validation:
   - Zygisk Next v1.4.2
   - LSPosed v2.1.0
