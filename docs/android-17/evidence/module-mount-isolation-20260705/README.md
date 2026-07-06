@@ -29,6 +29,11 @@ Device: Pixel 7 Pro, Android 17 CP2A.260605.012, SDK 37, blu_spark KSU-Next.
 - V4A, rclone, and unlimitedphotos module markers were re-enabled after restoring KSU-Next v3.2.0. Without Hybrid Mount, their expected live system-tree targets remain absent; AdGuard certificate mounts directly through KSU and does not require Hybrid Mount on this stack.
 - Reinstalling Hybrid Mount Lite v4.2.0-1815 through `ksud module install` works on KSU-Next v3.2.0, but the default overlay plan is not boot-safe on this device. The daemon overlaid `system`, `vendor`, and `product` for `ViPER4Android-RE-Fork`, `magisk-tailscaled`, and `unlimitedphotos`, magic-mounted `adguardcert`, and skipped `PixelXpert`.
 - The Hybrid Mount full-overlay test produced repeated `system_server_crash` entries during boot. The latest crash was `WifiService` startup failing because the Wi-Fi HIDL service manager lookup returned no service. Tombstones from the same window included repeated `audioserver` SIGSEGV entries. After Hybrid was disabled and the daemon process was stopped, the phone reached `sys.boot_completed=1` and no newer `system_server_crash` appeared after the 01:22 boot.
+- Hybrid Mount Lite does not accept `default_mode = "ignore"`; valid values are `overlay`, `magic`, and `kasumi`. An invalid `ignore` default makes Hybrid fail config parsing and mount nothing.
+- The working Hybrid Mount configuration for Google Photos is `default_mode = "magic"` plus `module_blacklist.toml` entries for every risky module except `unlimitedphotos`. `unlimitedphotos` also needs an explicit `/data/adb/modules/unlimitedphotos/magic` marker.
+- With that corrected Hybrid configuration, `GPhotosUnlimited` v3 mounts `/system/etc/sysconfig/pixel_2016_exclusive.xml` from `/data/adb/modules/unlimitedphotos/system/etc/sysconfig/pixel_2016_exclusive.xml`.
+- After the corrected Hybrid boot, Google Photos 7.82.0 displayed `Unlimited storage` and `Backup complete` in the account menu. Evidence: `photos-ui-after-unlimitedphotos-mount.xml`, `photos-ui-after-unlimitedphotos-mount.png`, and `photos-unlimited-verify-20260706.txt`.
+- Play Integrity recovered from no-integrity to `MEETS_DEVICE_INTEGRITY`, `PLAY_RECOGNIZED`, and `LICENSED` after the AlwaysStrong action refresh and PI process restart. `MEETS_STRONG_INTEGRITY` is still absent; AlwaysStrong v1.0.1, PIFork v17, and TEESimulator-RS v6.0.1-282 were already current.
 
 ## Current Device State After Isolation
 
@@ -41,11 +46,13 @@ Device: Pixel 7 Pro, Android 17 CP2A.260605.012, SDK 37, blu_spark KSU-Next.
 - PixelXpert hooks enabled: `persist.pixelxpert.disable_hooks=0`
 - Android 17 unsafe hooks disabled: `persist.pixelxpert.a17.unsafe_scopes=0`
 - PixelXpert LSPosed scope excludes `android` and includes SystemUI, Settings, Launcher, Dialer, KSU manager packages, and PixelXpert self-scope
-- Hybrid Mount disabled
-- Hybrid Mount daemon stopped after it continued running despite the disable marker
+- Hybrid Mount Lite enabled with a valid magic-only configuration and a blacklist that leaves only `unlimitedphotos` active for Hybrid mounting
+- Hybrid Mount default overlay mode is not safe on this device; do not remove the blacklist or enable V4A/rclone/tailscaled through Hybrid without a separate single-module boot test
 - AdGuard cert, tailscaled, V4A, rclone, and unlimitedphotos module markers enabled
 - AdGuard certificate live mounts present under `/system/etc/security/cacerts` and `/apex/com.android.conscrypt*/cacerts` through direct KSU mounts
-- V4A, rclone, and unlimitedphotos expected live paths absent pending isolated module-specific fixes
+- `unlimitedphotos` fixed through Hybrid magic mount; Google Photos UI shows `Unlimited storage`
+- V4A and rclone expected live paths remain absent pending isolated module-specific fixes
+- Play Integrity currently passes Device Integrity but not Strong Integrity
 - Thanox disabled pending separate work
 - Qorvo UWB vendor service disabled for user 0; rollback is available on-device
 - Final validation after reconnect: the phone booted with PixelXpert installed as a data app, PixelXpert KSU module enabled in `skip_mount` mode, hooks enabled, and LSPosed loading PixelXpert in all active non-system_server scopes. The last screen-unlock idle window was not repeated after the final CI APK because the lock-screen PIN bouncer did not focus reliably over adb, but process/log evidence showed the target scopes loaded and crash evidence stayed clean.
@@ -76,6 +83,14 @@ Device: Pixel 7 Pro, Android 17 CP2A.260605.012, SDK 37, blu_spark KSU-Next.
   `/data/adb/pixelxpert-stage/reinstall-hybrid-lite-ksud-20260706/rollback.sh /data/adb/pixelxpert-stage/reinstall-hybrid-lite-ksud-20260706`
 - Disable Hybrid Mount after a stalled boot:
   `/data/adb/pixelxpert-stage/disable-hybrid-marker-20260706/output.txt` records the marker write; if needed, create `/data/adb/modules/hybrid_mount/disable` from recovery/root shell and reboot.
+- Roll back the corrected Hybrid magic blacklist used for `unlimitedphotos`:
+  `/data/adb/pixelxpert-stage/configure-hybrid-magic-blacklist-unlimitedphotos-20260706-020306/rollback.sh /data/adb/pixelxpert-stage/configure-hybrid-magic-blacklist-unlimitedphotos-20260706-020306`
+- Roll back the `unlimitedphotos` magic marker and Hybrid script permission fix:
+  `/data/adb/pixelxpert-stage/fix-hybrid-unlimitedphotos-marker-20260706-015828/rollback.sh /data/adb/pixelxpert-stage/fix-hybrid-unlimitedphotos-marker-20260706-015828`
+- Roll back the AlwaysStrong refresh:
+  `/data/adb/pixelxpert-stage/pi-refresh-20260706-014122/rollback.sh /data/adb/pixelxpert-stage/pi-refresh-20260706-014122`
+- Roll back the added GSF target line:
+  `/data/adb/pixelxpert-stage/pi-add-gsf-target-20260706-014447/rollback.sh /data/adb/pixelxpert-stage/pi-add-gsf-target-20260706-014447`
 
 ## Code Fixes Added
 
@@ -93,7 +108,7 @@ Device: Pixel 7 Pro, Android 17 CP2A.260605.012, SDK 37, blu_spark KSU-Next.
 4. Re-check PixelXpert's live data APK hash and LSPosed `modules_config.db` path if another reinstall occurs.
 5. Keep `android` out of PixelXpert scope unless a separate system_server-safe staged plan is ready.
 6. Keep KSU-Next userspace at v3.2.0 / `33129` until a blu_spark or other cheetah Android 17 kernel exposes the UAPI expected by v3.3.0 / `33214`.
-7. Do not enable Hybrid Mount in its default overlay configuration. The next Hybrid test must blacklist every module except one candidate, start with direct AdGuard omitted because it already works through KSU, and verify boot/dropbox/tombstones after each single-module change.
+7. Do not enable Hybrid Mount in its default overlay configuration. The current working Hybrid test leaves only `unlimitedphotos` active under magic mode. Any additional module must be added one at a time with a reboot, idle window, dropbox check, and tombstone check.
 8. For the next risky module changes, stage/install first, keep rollback scripts ready, reboot once per variable, and verify dropbox/tombstones after an idle window.
 
 ## Not Committed
