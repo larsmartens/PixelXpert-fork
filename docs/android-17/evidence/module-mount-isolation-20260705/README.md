@@ -34,6 +34,7 @@ Device: Pixel 7 Pro, Android 17 CP2A.260605.012, SDK 37, blu_spark KSU-Next.
 - With that corrected Hybrid configuration, `GPhotosUnlimited` v3 mounts `/system/etc/sysconfig/pixel_2016_exclusive.xml` from `/data/adb/modules/unlimitedphotos/system/etc/sysconfig/pixel_2016_exclusive.xml`.
 - After the corrected Hybrid boot, Google Photos 7.82.0 displayed `Unlimited storage` and `Backup complete` in the account menu. Evidence: `photos-ui-after-unlimitedphotos-mount.xml`, `photos-ui-after-unlimitedphotos-mount.png`, and `photos-unlimited-verify-20260706.txt`.
 - Play Integrity recovered from no-integrity to `MEETS_DEVICE_INTEGRITY`, `PLAY_RECOGNIZED`, and `LICENSED` after the AlwaysStrong action refresh and PI process restart. `MEETS_STRONG_INTEGRITY` is still absent; AlwaysStrong v1.0.1, PIFork v17, and TEESimulator-RS v6.0.1-282 were already current.
+- An explicit AlwaysStrong `keybox_fetch.sh` run after the Device Integrity recovery reported `already up to date`; the keybox file metadata did not change. A follow-up Play Store-installed checker request at 2026-07-06 02:10:54 still returned Device Integrity only. Further Strong work should use a different validated keybox/source or a clean alternative stack rather than stacking another integrity module over AlwaysStrong.
 
 ## Current Device State After Isolation
 
@@ -53,6 +54,7 @@ Device: Pixel 7 Pro, Android 17 CP2A.260605.012, SDK 37, blu_spark KSU-Next.
 - `unlimitedphotos` fixed through Hybrid magic mount; Google Photos UI shows `Unlimited storage`
 - V4A and rclone expected live paths remain absent pending isolated module-specific fixes
 - Play Integrity currently passes Device Integrity but not Strong Integrity
+- AlwaysStrong keybox refresh was checked explicitly and reported no newer mirror keybox
 - Thanox disabled pending separate work
 - Qorvo UWB vendor service disabled for user 0; rollback is available on-device
 - Final validation after reconnect: the phone booted with PixelXpert installed as a data app, PixelXpert KSU module enabled in `skip_mount` mode, hooks enabled, and LSPosed loading PixelXpert in all active non-system_server scopes. The last screen-unlock idle window was not repeated after the final CI APK because the lock-screen PIN bouncer did not focus reliably over adb, but process/log evidence showed the target scopes loaded and crash evidence stayed clean.
@@ -91,6 +93,8 @@ Device: Pixel 7 Pro, Android 17 CP2A.260605.012, SDK 37, blu_spark KSU-Next.
   `/data/adb/pixelxpert-stage/pi-refresh-20260706-014122/rollback.sh /data/adb/pixelxpert-stage/pi-refresh-20260706-014122`
 - Roll back the added GSF target line:
   `/data/adb/pixelxpert-stage/pi-add-gsf-target-20260706-014447/rollback.sh /data/adb/pixelxpert-stage/pi-add-gsf-target-20260706-014447`
+- Roll back the explicit keybox refresh attempt:
+  `/data/adb/pixelxpert-stage/pi-keybox-refresh-20260706-021007/rollback.sh /data/adb/pixelxpert-stage/pi-keybox-refresh-20260706-021007`
 
 ## Code Fixes Added
 
