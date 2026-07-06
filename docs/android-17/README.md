@@ -4,37 +4,39 @@ Date: 2026-07-05
 
 This directory records the Android 17 device work on a Pixel 7 Pro (`cheetah`) running build `CP2A.260605.012`, SDK 37, with KSU-Next, Zygisk providers, LSPosed/Vector, Play Integrity modules, and PixelXpert's Android 17 boot-safe architecture.
 
+Latest validation: see `module-integrity-validation-20260706.md`. That newer note supersedes the 2026-07-05 state for Hybrid Mount, PixelXpert module markers, and the Play Integrity stack.
+
 ## Current Device State
 
 - PixelXpert is installed as a normal data app and launches successfully:
   - package: `sh.siava.pixelxpert`
   - version: `canary-513`
   - launcher alias: `.FakeSplashActivityNormalIcon`
-- PixelXpert's KSU module is still disabled and should remain the durable rollback point:
-  - `/data/adb/modules/PixelXpert/disable`
+- PixelXpert's KSU module is enabled as a helper/module payload, but `skip_mount` is present and should remain the durable boot-safety control:
   - `/data/adb/modules/PixelXpert/skip_mount`
 - PixelXpert is enabled in LSPosed with declared scopes only:
-  - `android`
   - `com.android.settings`
   - `com.android.systemui`
   - `com.google.android.apps.nexuslauncher`
   - `com.google.android.dialer`
   - `com.rifsxd.ksunext`
   - `sh.siava.pixelxpert`
-- No PixelXpert LSPosed `system` scope row is present.
-- PixelXpert, Settings, Google Dialer, and KSU-Next Manager launched after the final restored-module reboot.
+- No PixelXpert LSPosed `android`, `system`, or `system_server` scope row is present.
+- PixelXpert, Settings, Google Dialer, Google Photos, AdGuard, and SPIC launched after the final restored-module reboot.
 - KSU-Next Manager was updated to v3.3.0 and blu_spark was updated to r266 `gs-next`; see `evidence/ksu-next-manager-kernel-update-20260705.md`.
 - blu_spark r266 still reports kernel-side KSU `33129`, so live KSU userspace and Manager were aligned back to v3.2.0 (`33129`) after v3.3.0 caused `ksud module install` UAPI mismatch failures.
-- Hybrid Mount is not currently active. `/data/adb/hybrid-mount` remains as leftover config only, with no installed active module, daemon, or mount evidence; see `evidence/hybrid-mount-state-20260705.txt`.
-- Current enabled module stack after final restore:
+- Hybrid Mount Lite is active again as module id `hybrid_mount`, version `4.2.0-1815`. The 2026-07-06 validation has Unlimited Photos, AdGuard certificate, and rclone using Hybrid magic markers.
+- Current enabled module stack after the 2026-07-06 validation:
   - Zygisk Next v1.4.2
   - LSPosed v2.1.0
-  - AlwaysStrong v1.0.1
+  - KOWX Play Integrity Fix v4.6-inject-s
+  - official TrickyStore v1.4.1
+  - KOWX Tricky Addon v4.4
   - Zygisk Detach v1.23.1
   - NoHello v0.0.7
   - Unlimited Photos v3
   - Tailscaled v2.0.0.1
-  - rclone v1.74.3
+  - rclone v1.16 module with mounted rclone binaries
   - rvmm-zygisk-mount v9
   - ViPER4Android RE Fork v8.0
   - AdGuard cert v2.2.0-beta.7
@@ -44,9 +46,9 @@ This directory records the Android 17 device work on a Pixel 7 Pro (`cheetah`) r
   - ReZygisk
   - Thanox
   - YouTube Morphe
-- Play Integrity currently passes BASIC and DEVICE with AlwaysStrong v1.0.1. STRONG still fails. See `play-integrity-hybrid-update-20260705.md`.
+- Play Integrity currently passes DEVICE with the KOWX PIF plus official TrickyStore stack. STRONG still fails. See `module-integrity-validation-20260706.md`.
 - The current root-stack decision is recorded in `evidence/root-stack-current-decision-20260705.md`: stay on blu_spark r266 `gs-next` with KSU-Next userspace/Manager v3.2.0 (`33129`) until a kernel explicitly integrates a newer KSU-Next userspace/UAPI.
-- As of the latest validation, there were no new `system_server_*` dropbox entries after the final restored-module reboot. A `keystore2` tombstone appeared at `2026-07-05 18:01` during Play Integrity stack churn and has not recurred after the final restore.
+- As of the latest validation, there were no new `system_server_*` dropbox entries after the restored-module reboot. The newest tombstones remained from `2026-07-06 01:21`.
 - Google Play services still reports `BadAuthentication` / `UNAUTHENTICATED` and account-action-required notifications. Treat this as a separate account/session item before more Play Integrity tuning.
 
 ## Commits On Investigation Branch
