@@ -45,6 +45,41 @@ Rollback:
 - LSPosed scope rollback:
   `/data/adb/pixelxpert-stage/lsposed-pixelxpert-scopes-e2fd73aa-20260706-0350/rollback.sh /data/adb/pixelxpert-stage/lsposed-pixelxpert-scopes-e2fd73aa-20260706-0350`
 
+### Launcher Preference Retry Follow-Up
+
+Commit `8dd729f8` replaced the first-attempt Launcher preference timeout behavior with a longer single probe budget for Android 17 deferred app scopes. This avoids skipping Launcher hooks when the PixelXpert preference provider is slow to cold-start, while still leaving at most one blocked provider probe per scoped process if Binder does not return.
+
+GitHub Actions:
+
+- run: `28772253880`
+- result: success
+- URL: https://github.com/larsmartens/PixelXpert-fork/actions/runs/28772253880
+- jobs passed: static module guards, assembleDebug, assembleRelease, lint, dependency validation, zip integrity
+- artifact SHA256: `f2475c74d17d9e00a3e6dae99971a6989f01724140f6cabdde7102dc6afc816f`
+- APK SHA256: `932d208368e91cceab98435d690d00dcd70cb41475ba1bf80b59b29ff4ef753d`
+
+Installed state after reboot:
+
+- app APK SHA256: `932d208368e91cceab98435d690d00dcd70cb41475ba1bf80b59b29ff4ef753d`
+- module APK SHA256: `932d208368e91cceab98435d690d00dcd70cb41475ba1bf80b59b29ff4ef753d`
+- LSPosed enabled scopes:
+  `com.android.settings`, `com.android.systemui`, `com.google.android.apps.nexuslauncher`, `com.google.android.dialer`, `com.rifsxd.ksunext`, `sh.siava.pixelxpert`
+
+Post-reboot LSPosed evidence:
+
+- `com.google.android.apps.nexuslauncher` loaded PixelXpert `canary-513`.
+- Nexus Launcher reported `PixelXpert Records: 187`.
+- The previous `preference provider probe timed out in com.google.android.apps.nexuslauncher` line did not recur after the reboot onto `8dd729f8`.
+- SystemUI, Settings, Dialer, and PixelXpert also loaded PixelXpert and reported records.
+- No fresh `system_server_*` dropbox entry or tombstone appeared in the post-reboot idle window.
+
+Rollback:
+
+- APK rollback:
+  `/data/adb/pixelxpert-stage/install-ci-patched-apk-full-reinstall-20260706-083042/rollback.sh /data/adb/pixelxpert-stage/install-ci-patched-apk-full-reinstall-20260706-083042`
+- LSPosed scope rollback:
+  `/data/adb/pixelxpert-stage/lsposed-pixelxpert-scopes-8dd729f8-20260706-083150/rollback.sh /data/adb/pixelxpert-stage/lsposed-pixelxpert-scopes-8dd729f8-20260706-083150`
+
 ## Module State
 
 Enabled:

@@ -64,6 +64,10 @@ SSLUnpinner:
 
 Do not install or enable the fallback modules alongside SSL Killer unless a specific target app needs that coverage and the previous module has been unscoped or removed.
 
+Reviewed but not selected as primary:
+
+- `0xdad0/ssl-kill-switch-lsposed` `v0.0.2`, released `2026-06-23`: newer than SSL Killer, with Java and Flutter/native coverage on paper, but very new, low-adoption, and its README describes hooks applying to every process in LSPosed scope. Keep it as a lab-only option until it has more field evidence.
+
 ## Activation Procedure
 
 For each target app:
