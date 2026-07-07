@@ -299,7 +299,7 @@ public class ScreenGestures extends XposedModPack {
 		listenerClass2
 				.before("onDoubleTapEvent")
 				.runSafe(param2 -> {
-					if (isQSExpanded() || getBooleanField(NotificationPanelViewController, "mBouncerShowing")) {
+					if (isQSExpanded() || isBouncerShowing()) {
 						return;
 					}
 					doubleTap = true;
@@ -362,22 +362,50 @@ public class ScreenGestures extends XposedModPack {
 	}
 
 	private boolean isQSExpanded() {
-		return (boolean) callMethod(NotificationPanelViewController, "isShadeFullyExpanded");
+		if(NotificationPanelViewController == null) return true;
+		try {
+			return (boolean) callMethod(NotificationPanelViewController, "isShadeFullyExpanded");
+		}
+		catch (Throwable ignored) {
+			return true;
+		}
+	}
+
+	private boolean isBouncerShowing() {
+		if(NotificationPanelViewController == null) return true;
+		try {
+			return getBooleanField(NotificationPanelViewController, "mBouncerShowing");
+		}
+		catch (Throwable ignored) {
+			return true;
+		}
 	}
 
 	private boolean keyguardNotShowing(Object mStatusBarKeyguardViewManager) {
+		if(mStatusBarKeyguardViewManager == null) return true;
 		try {
 			return !((boolean) callMethod(mStatusBarKeyguardViewManager, "isShowing"));
 		} catch (Throwable ignored) {
-			return !getBooleanField(mStatusBarKeyguardViewManager, "mLastShowing");
+			try {
+				return !getBooleanField(mStatusBarKeyguardViewManager, "mLastShowing");
+			}
+			catch (Throwable ignored2) {
+				return true;
+			}
 		}
 	}
 
 	private boolean keyguardNotShowingCompose()
 	{
-		return callMethod(getObjectField(mKeyguardInteractor, "isKeyguardShowing"), "getValue").equals(false)
-						|| callMethod(getObjectField(mKeyguardInteractor, "primaryBouncerShowing"), "getValue").equals(true)
-						|| (boolean) callMethod(callMethod(mShadeInteractorSceneContainerImpl, "isAnyExpanded"), "getValue");
+		if(mKeyguardInteractor == null || mShadeInteractorSceneContainerImpl == null) return true;
+		try {
+			return callMethod(getObjectField(mKeyguardInteractor, "isKeyguardShowing"), "getValue").equals(false)
+							|| callMethod(getObjectField(mKeyguardInteractor, "primaryBouncerShowing"), "getValue").equals(true)
+							|| (boolean) callMethod(callMethod(mShadeInteractorSceneContainerImpl, "isAnyExpanded"), "getValue");
+		}
+		catch (Throwable ignored) {
+			return true;
+		}
 	}
 
 	private void turnOffTTT() {
